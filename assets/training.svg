@@ -1,0 +1,26 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Football training session</title>
+  <desc id="desc">A player running through cones with a football.</desc>
+  <rect width="720" height="520" rx="32" fill="#F1FBF4"/>
+  <path d="M70 388C184 330 312 304 450 318C536 326 604 350 650 388V454H70V388Z" fill="#0CA678"/>
+  <path d="M106 418H616" stroke="#D3F9D8" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="472" cy="176" r="36" fill="#14213D"/>
+  <path d="M448 218L392 302" stroke="#14213D" stroke-width="30" stroke-linecap="round"/>
+  <path d="M398 286L324 260" stroke="#14213D" stroke-width="22" stroke-linecap="round"/>
+  <path d="M403 300L476 332" stroke="#14213D" stroke-width="22" stroke-linecap="round"/>
+  <path d="M476 332L540 388" stroke="#14213D" stroke-width="20" stroke-linecap="round"/>
+  <path d="M382 308L332 382" stroke="#14213D" stroke-width="20" stroke-linecap="round"/>
+  <path d="M470 218L528 264" stroke="#087F5B" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="254" cy="386" r="34" fill="white" stroke="#14213D" stroke-width="6"/>
+  <path d="M240 360L268 413M282 381L226 395" stroke="#14213D" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#F59F00">
+    <path d="M132 382L154 316L176 382H132Z"/>
+    <path d="M216 366L238 300L260 366H216Z"/>
+    <path d="M592 386L614 320L636 386H592Z"/>
+  </g>
+  <g stroke="#94D2BD" stroke-width="8" stroke-linecap="round">
+    <path d="M104 132H238"/>
+    <path d="M104 170H196"/>
+    <path d="M104 208H220"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Football store gear</title>
+  <desc id="desc">A football boot, ball, and training shirt.</desc>
+  <rect width="720" height="520" rx="32" fill="#FFF9DB"/>
+  <rect x="76" y="72" width="568" height="376" rx="28" fill="white" stroke="#F1E0A3" stroke-width="3"/>
+  <path d="M132 312C224 320 314 300 396 252C428 234 462 238 486 262L528 304C538 314 532 332 518 334C386 354 264 358 150 340C128 336 112 326 132 312Z" fill="#14213D"/>
+  <path d="M216 315L252 274M278 310L314 268M340 302L370 262" stroke="#D3F9D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M526 306L584 286C604 280 626 294 630 316C636 350 608 380 574 374L502 362L526 306Z" fill="#087F5B"/>
+  <circle cx="536" cy="184" r="60" fill="white" stroke="#14213D" stroke-width="8"/>
+  <path d="M536 124L572 170L558 226H514L500 170L536 124Z" stroke="#14213D" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M476 184H596M500 170L476 184M572 170L596 184M514 226L496 248M558 226L576 248" stroke="#14213D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M170 130L230 104L290 130L272 196V266H188V196L170 130Z" fill="#0CA678"/>
+  <path d="M207 116C214 138 246 138 253 116" stroke="#D3F9D8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M188 196H272" stroke="#D3F9D8" stroke-width="8"/>
+</svg>
