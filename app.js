@@ -129,6 +129,7 @@ const pickupMatches = [
     id: "m1",
     name: "ماتش مدينة نصر الليلي",
     venue: "ملعب النخيل",
+<<<<<<< HEAD
     area: "مدينة نصر",
     location: "شارع مصطفى النحاس، مدينة نصر",
     image: fieldPhotos.nightArena,
@@ -139,12 +140,19 @@ const pickupMatches = [
       { name: "Team A", openSlots: 2, color: "أخضر" },
       { name: "Team B", openSlots: 1, color: "أبيض" },
     ],
+=======
+    time: "اليوم 9:00 مساء",
+    level: "متوسط",
+    team: "Team A",
+    openSlots: 3,
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     cost: 95,
   },
   {
     id: "m2",
     name: "ماتش المعادي السريع",
     venue: "Arena 90",
+<<<<<<< HEAD
     area: "المعادي",
     location: "كورنيش المعادي، بجوار نادي المعادي",
     image: fieldPhotos.playerPitch,
@@ -155,12 +163,19 @@ const pickupMatches = [
       { name: "Team Wolves", openSlots: 2, color: "أسود" },
       { name: "Team Eagles", openSlots: 0, color: "أزرق" },
     ],
+=======
+    time: "غدا 7:30 مساء",
+    level: "متقدم",
+    team: "Team B",
+    openSlots: 2,
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     cost: 120,
   },
   {
     id: "m3",
     name: "تقسيمة الجمعة",
     venue: "Club House",
+<<<<<<< HEAD
     area: "الشيخ زايد",
     location: "الحي السادس، الشيخ زايد",
     image: fieldPhotos.aerialPitch,
@@ -221,6 +236,14 @@ const pickupMatches = [
     ],
     cost: 140,
   },
+=======
+    time: "الجمعة 6:00 مساء",
+    level: "مبتدئ",
+    team: "Team A",
+    openSlots: 5,
+    cost: 80,
+  },
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 ];
 
 const players = [
@@ -279,6 +302,7 @@ const sessions = [
 
 const products = [
   {
+<<<<<<< HEAD
     id: "shoe-speed",
     title: "Speed Runner Shoes",
     description: "حذاء تدريب خفيف بجزء علوي مرن ونعل مريح للجري قبل وبعد الماتش.",
@@ -357,6 +381,27 @@ const products = [
     price: 780,
     category: "Boots",
     imageUrl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=1200&q=82",
+=======
+    id: "boot",
+    name: "حذاء Turf Pro",
+    desc: "ثبات ممتاز للملاعب الخماسية والنجيلة الصناعية.",
+    price: 1450,
+    image: "assets/store-gear.svg",
+  },
+  {
+    id: "kit",
+    name: "طقم تدريب DryFit",
+    desc: "خفيف، سريع الجفاف، ومناسب للحصص الطويلة.",
+    price: 620,
+    image: "assets/store-gear.svg",
+  },
+  {
+    id: "ball",
+    name: "كرة Match Size 5",
+    desc: "ملمس احترافي ومسار ثابت للتدريب والماتشات.",
+    price: 780,
+    image: "assets/store-gear.svg",
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
   },
 ];
 
@@ -365,6 +410,7 @@ const state = {
   selectedSlot: null,
   selectedVenueModalId: null,
   selectedPickupId: null,
+<<<<<<< HEAD
   selectedPickupTeam: "",
   squad: [],
   captainId: "",
@@ -373,6 +419,11 @@ const state = {
     activeCategory: "all",
     activeProductId: null,
   },
+=======
+  squad: [],
+  captainId: "",
+  cart: [],
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
   walletBalance: 1240,
   payment: {
     context: null,
@@ -433,6 +484,7 @@ function getBookingTotals() {
   return { price, fee, total: price + fee };
 }
 
+<<<<<<< HEAD
 function getSelectedPickup() {
   return pickupMatches.find((item) => item.id === state.selectedPickupId);
 }
@@ -441,12 +493,15 @@ function getPickupOpenSlots(match) {
   return match ? match.teams.reduce((sum, team) => sum + team.openSlots, 0) : 0;
 }
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 function syncWalletUi() {
   document.querySelectorAll("[data-wallet-balance]").forEach((node) => {
     node.textContent = formatMoney(state.walletBalance);
   });
 }
 
+<<<<<<< HEAD
 function getCartItems() {
   return state.cart
     .map((item) => ({
@@ -460,6 +515,8 @@ function getCartTotal() {
   return getCartItems().reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 }
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 function showSection(sectionId) {
   document.querySelectorAll(".app-section").forEach((section) => {
     section.classList.toggle("active", section.id === sectionId);
@@ -691,13 +748,21 @@ function renderPaymentModal() {
   const enoughWallet = state.walletBalance >= context.total;
 
   if (walletSelected && !enoughWallet) {
+<<<<<<< HEAD
     note.textContent = "رصيد المحفظة غير كافي لإتمام العملية. اختار فيزا أو فودافون كاش.";
+=======
+    note.textContent = "رصيد المحفظة غير كافي لإتمام الحجز. اختار فيزا أو فودافون كاش.";
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     confirm.disabled = true;
   } else if (walletSelected) {
     note.textContent = "سيتم خصم المبلغ من محفظتك بعد نافذة التأكيد.";
     confirm.disabled = false;
   } else {
+<<<<<<< HEAD
     note.textContent = "سيتم تأكيد العملية فور إتمام الدفع التجريبي.";
+=======
+    note.textContent = "سيتم تأكيد الحجز فور إتمام الدفع التجريبي.";
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     confirm.disabled = false;
   }
 }
@@ -721,10 +786,13 @@ function completePayment() {
 
   if (context.type === "venue-booking") {
     finalizeVenueBooking();
+<<<<<<< HEAD
   } else if (context.type === "pickup-join") {
     finalizePickupJoin();
   } else if (context.type === "store-checkout") {
     finalizeStoreCheckout();
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
   }
 }
 
@@ -742,6 +810,7 @@ function finalizeVenueBooking() {
   updateBookingSummary();
 }
 
+<<<<<<< HEAD
 function finalizePickupJoin() {
   const match = getSelectedPickup();
   if (!match || !state.selectedPickupTeam) return;
@@ -806,6 +875,15 @@ function renderPickupMatches() {
             <span>${match.type}</span>
           </div>
           <div class="pickup-card-body">
+=======
+function renderPickupMatches() {
+  const list = document.getElementById("pickup-list");
+  list.innerHTML = pickupMatches
+    .map(
+      (match) => `
+        <article class="pickup-card group rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport ${state.selectedPickupId === match.id ? "selected" : ""}">
+          <div class="stack">
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
             <div class="card-title-row">
               <div>
                 <h3>${match.name}</h3>
@@ -813,6 +891,7 @@ function renderPickupMatches() {
               </div>
               <strong>${formatMoney(match.cost)}</strong>
             </div>
+<<<<<<< HEAD
             <p>${match.location}</p>
             <div class="team-slots">
               ${availableTeams.map((team) => `<span>${team.name}: ${team.openSlots} أماكن</span>`).join("")}
@@ -823,10 +902,22 @@ function renderPickupMatches() {
         </article>
       `;
     })
+=======
+            <div class="team-slots">
+              <span>${match.team}</span>
+              <span>${match.openSlots} أماكن فاضية</span>
+            </div>
+          </div>
+          <button class="primary-button" type="button" data-pickup-id="${match.id}">انضم</button>
+        </article>
+      `,
+    )
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     .join("");
 }
 
 function updatePickupSummary() {
+<<<<<<< HEAD
   const match = getSelectedPickup();
   document.getElementById("pickup-name").textContent = match ? match.name : "اختار ماتش";
   document.getElementById("pickup-team").textContent = state.selectedPickupTeam || "لم يتم الاختيار";
@@ -903,6 +994,13 @@ function openPickupPayment(teamName) {
     fee: Math.round(match.cost * 0.01),
     successText: "تم تأكيد انضمامك للماتش",
   });
+=======
+  const match = pickupMatches.find((item) => item.id === state.selectedPickupId);
+  document.getElementById("pickup-name").textContent = match ? match.name : "اختار ماتش";
+  document.getElementById("pickup-team").textContent = match ? match.team : "لم يتم الاختيار";
+  document.getElementById("pickup-cost").textContent = formatMoney(match ? match.cost : 0);
+  document.getElementById("confirm-pickup").disabled = !match;
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 }
 
 function renderHome() {
@@ -948,7 +1046,11 @@ function renderHome() {
               <span>${match.venue} / ${match.time}</span>
             </div>
             <div class="home-pickup-side">
+<<<<<<< HEAD
               <strong>${getPickupOpenSlots(match)} أماكن</strong>
+=======
+              <strong>${match.openSlots} أماكن</strong>
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
               <button class="small-button" type="button" data-home-pickup="${match.id}">انضم</button>
             </div>
           </article>
@@ -963,12 +1065,21 @@ function renderHome() {
       .map(
         (product) => `
           <article class="home-product-card group rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+<<<<<<< HEAD
             <img src="${product.imageUrl}" alt="${product.title}" />
             <div>
                 <h3>${product.title}</h3>
                 <strong>${formatMoney(product.price)}</strong>
               </div>
               <button class="small-button" type="button" data-product-id="${product.id}">أضف للسلة</button>
+=======
+            <img src="${product.image}" alt="${product.name}" />
+            <div>
+              <h3>${product.name}</h3>
+              <strong>${formatMoney(product.price)}</strong>
+            </div>
+            <button class="small-button" type="button" data-product-id="${product.id}">أضف للسلة</button>
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
           </article>
         `,
       )
@@ -1459,6 +1570,7 @@ function setActiveSession(sessionId) {
   document.getElementById("session-progress").style.width = `${session.progress}%`;
 }
 
+<<<<<<< HEAD
 function filteredStoreProducts() {
   if (state.store.activeCategory === "all") return products;
   return products.filter((product) => product.category === state.store.activeCategory);
@@ -1507,6 +1619,21 @@ function renderProducts() {
               <strong>${formatMoney(product.price)}</strong>
               <button class="small-button" type="button" data-product-id="${product.id}">أضف للسلة</button>
             </div>
+=======
+function renderProducts() {
+  document.getElementById("product-list").innerHTML = products
+    .map(
+      (product) => `
+        <article class="product-card rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+          <div class="product-visual">
+            <img src="${product.image}" alt="${product.name}" />
+          </div>
+          <h3>${product.name}</h3>
+          <p>${product.desc}</p>
+          <div class="price-row">
+            <strong>${formatMoney(product.price)}</strong>
+            <button class="small-button" type="button" data-product-id="${product.id}">أضف للسلة</button>
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
           </div>
         </article>
       `,
@@ -1514,6 +1641,7 @@ function renderProducts() {
     .join("");
 }
 
+<<<<<<< HEAD
 function addToCart(productId, quantity = 1) {
   const product = products.find((item) => item.id === productId);
   if (!product) return;
@@ -1546,6 +1674,14 @@ function renderCart() {
   document.getElementById("cart-subtotal").textContent = formatMoney(total);
   document.getElementById("cart-checkout").disabled = !items.length;
   syncWalletUi();
+=======
+function renderCart() {
+  const cartList = document.getElementById("cart-list");
+  const items = state.cart.map((id) => products.find((product) => product.id === id)).filter(Boolean);
+  const total = items.reduce((sum, product) => sum + product.price, 0);
+  document.getElementById("cart-count").textContent = String(items.length);
+  document.getElementById("cart-total").textContent = formatMoney(total);
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 
   if (!items.length) {
     cartList.className = "cart-list empty-state";
@@ -1553,6 +1689,7 @@ function renderCart() {
     return;
   }
 
+<<<<<<< HEAD
   cartList.className = "cart-list store-cart-list";
   cartList.innerHTML = items
     .map(
@@ -1570,11 +1707,22 @@ function renderCart() {
           </div>
           <button class="small-button remove" type="button" data-remove-product="${item.product.id}">حذف</button>
         </article>
+=======
+  cartList.className = "cart-list";
+  cartList.innerHTML = items
+    .map(
+      (item, index) => `
+        <div class="cart-item">
+          <span>${item.name}</span>
+          <button class="small-button remove" type="button" data-cart-index="${index}">حذف</button>
+        </div>
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
       `,
     )
     .join("");
 }
 
+<<<<<<< HEAD
 function openProductDetail(productId) {
   const product = products.find((item) => item.id === productId);
   const content = document.getElementById("product-detail-content");
@@ -1614,6 +1762,8 @@ function openStoreCheckout() {
   });
 }
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
 function bindEvents() {
   document.addEventListener("click", (event) => {
     const toggleButton = event.target.closest(".sidebar-toggle");
@@ -1655,12 +1805,15 @@ function bindEvents() {
       return;
     }
 
+<<<<<<< HEAD
     const pickupTeamButton = event.target.closest("[data-pickup-team]");
     if (pickupTeamButton && !pickupTeamButton.disabled) {
       openPickupPayment(pickupTeamButton.dataset.pickupTeam);
       return;
     }
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     const paymentMethodButton = event.target.closest("[data-payment-method]");
     if (paymentMethodButton) {
       state.payment.method = paymentMethodButton.dataset.paymentMethod;
@@ -1682,6 +1835,7 @@ function bindEvents() {
       return;
     }
 
+<<<<<<< HEAD
     const storeCategoryButton = event.target.closest("[data-store-category]");
     if (storeCategoryButton) {
       state.store.activeCategory = storeCategoryButton.dataset.storeCategory;
@@ -1720,6 +1874,8 @@ function bindEvents() {
       return;
     }
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     if (event.target.closest("[data-close-fantasy-modal]") || event.target.classList.contains("fantasy-modal")) {
       closeFantasyModals();
       return;
@@ -1804,9 +1960,16 @@ function bindEvents() {
 
     const pickupButton = event.target.closest("[data-pickup-id]");
     if (pickupButton) {
+<<<<<<< HEAD
       document.getElementById("pickup-success").classList.add("hidden");
       openPickupDetails(pickupButton.dataset.pickupId);
       return;
+=======
+      state.selectedPickupId = pickupButton.dataset.pickupId;
+      document.getElementById("pickup-success").classList.add("hidden");
+      renderPickupMatches();
+      updatePickupSummary();
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     }
 
     const homeVenueButton = event.target.closest("[data-home-venue]");
@@ -1820,9 +1983,16 @@ function bindEvents() {
 
     const homePickupButton = event.target.closest("[data-home-pickup]");
     if (homePickupButton) {
+<<<<<<< HEAD
       showSection("pickup");
       openPickupDetails(homePickupButton.dataset.homePickup);
       return;
+=======
+      state.selectedPickupId = homePickupButton.dataset.homePickup;
+      renderPickupMatches();
+      updatePickupSummary();
+      showSection("pickup");
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     }
 
     const playerButton = event.target.closest("[data-player-id]");
@@ -1844,8 +2014,19 @@ function bindEvents() {
 
     const productButton = event.target.closest("[data-product-id]");
     if (productButton) {
+<<<<<<< HEAD
       addToCart(productButton.dataset.productId);
       document.getElementById("store-success")?.classList.add("hidden");
+=======
+      state.cart.push(productButton.dataset.productId);
+      renderCart();
+    }
+
+    const cartButton = event.target.closest("[data-cart-index]");
+    if (cartButton) {
+      state.cart.splice(Number(cartButton.dataset.cartIndex), 1);
+      renderCart();
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
     }
 
     const tab = event.target.closest("[data-tab]");
@@ -1879,8 +2060,13 @@ function bindEvents() {
   });
 
   document.getElementById("confirm-pickup").addEventListener("click", () => {
+<<<<<<< HEAD
     if (!state.selectedPickupId || !state.selectedPickupTeam) return;
     openPickupPayment(state.selectedPickupTeam);
+=======
+    if (!state.selectedPickupId) return;
+    document.getElementById("pickup-success").classList.remove("hidden");
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
   });
 
   document.getElementById("complete-session").addEventListener("click", () => {
@@ -1894,10 +2080,13 @@ function bindEvents() {
     });
   });
 
+<<<<<<< HEAD
   ["pickup-type-filter", "pickup-level-filter", "pickup-area-filter"].forEach((id) => {
     document.getElementById(id).addEventListener("change", renderPickupMatches);
   });
 
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
   ["position-filter", "club-filter", "price-filter"].forEach((id) => {
     document.getElementById(id).addEventListener("change", renderPlayers);
   });

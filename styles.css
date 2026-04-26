@@ -4688,6 +4688,7 @@ td {
     height: 178px;
   }
 }
+<<<<<<< HEAD
 
 /* Pickup match upgrade */
 #pickup .content-grid.wide-left {
@@ -5156,3 +5157,5 @@ td {
     box-shadow: 0 18px 38px rgba(8, 127, 91, 0.22);
   }
 }
+=======
+>>>>>>> 891ff5660296a7ba00d66a97193c339a8f25236c
