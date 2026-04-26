@@ -1,0 +1,35 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pickup football match</title>
+  <desc id="desc">Two five-a-side teams gathering around a football pitch.</desc>
+  <rect width="760" height="520" rx="34" fill="#E6FCF5"/>
+  <path d="M80 358C176 292 300 258 452 268C560 276 636 310 688 362V448H80V358Z" fill="#0CA678"/>
+  <rect x="126" y="304" width="508" height="128" rx="16" stroke="white" stroke-width="7"/>
+  <path d="M380 304V432" stroke="white" stroke-width="6"/>
+  <circle cx="380" cy="368" r="34" stroke="white" stroke-width="6"/>
+  <g fill="#14213D">
+    <circle cx="198" cy="170" r="34"/>
+    <circle cx="300" cy="142" r="34"/>
+    <circle cx="468" cy="142" r="34"/>
+    <circle cx="570" cy="170" r="34"/>
+  </g>
+  <g stroke="#14213D" stroke-width="24" stroke-linecap="round">
+    <path d="M198 210V286"/>
+    <path d="M300 182V270"/>
+    <path d="M468 182V270"/>
+    <path d="M570 210V286"/>
+  </g>
+  <g stroke="#087F5B" stroke-width="18" stroke-linecap="round">
+    <path d="M176 236L130 264"/>
+    <path d="M322 210L370 238"/>
+    <path d="M446 210L398 238"/>
+    <path d="M592 236L638 264"/>
+  </g>
+  <circle cx="382" cy="248" r="28" fill="white" stroke="#14213D" stroke-width="6"/>
+  <path d="M370 226L394 272M406 246L358 258" stroke="#14213D" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#F59F00">
+    <rect x="112" y="92" width="124" height="18" rx="9"/>
+    <rect x="522" y="92" width="124" height="18" rx="9"/>
+    <rect x="164" y="122" width="72" height="14" rx="7"/>
+    <rect x="522" y="122" width="72" height="14" rx="7"/>
+  </g>
+</svg>

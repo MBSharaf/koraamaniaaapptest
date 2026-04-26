@@ -1,0 +1,40 @@
+<svg width="900" height="580" viewBox="0 0 900 580" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Modern football stadium</title>
+  <desc id="desc">A stylized football pitch inside a modern stadium.</desc>
+  <rect width="900" height="580" rx="34" fill="#EAF7EE"/>
+  <path d="M60 126C132 70 248 42 450 42C652 42 768 70 840 126V226H60V126Z" fill="#14213D"/>
+  <path d="M88 139C158 98 270 78 450 78C630 78 742 98 812 139V196H88V139Z" fill="#1F3A34"/>
+  <g opacity=".9">
+    <rect x="115" y="152" width="38" height="18" rx="5" fill="#D3F9D8"/>
+    <rect x="177" y="132" width="38" height="18" rx="5" fill="#94D2BD"/>
+    <rect x="239" y="152" width="38" height="18" rx="5" fill="#FDE68A"/>
+    <rect x="301" y="132" width="38" height="18" rx="5" fill="#D3F9D8"/>
+    <rect x="363" y="152" width="38" height="18" rx="5" fill="#94D2BD"/>
+    <rect x="425" y="132" width="38" height="18" rx="5" fill="#FDE68A"/>
+    <rect x="487" y="152" width="38" height="18" rx="5" fill="#D3F9D8"/>
+    <rect x="549" y="132" width="38" height="18" rx="5" fill="#94D2BD"/>
+    <rect x="611" y="152" width="38" height="18" rx="5" fill="#FDE68A"/>
+    <rect x="673" y="132" width="38" height="18" rx="5" fill="#D3F9D8"/>
+    <rect x="735" y="152" width="38" height="18" rx="5" fill="#94D2BD"/>
+  </g>
+  <path d="M123 230H777L837 512H63L123 230Z" fill="#099268"/>
+  <path d="M170 270H730L773 481H127L170 270Z" fill="#0CA678"/>
+  <path d="M188 288H712V463H188V288Z" stroke="white" stroke-width="10"/>
+  <path d="M450 288V463" stroke="white" stroke-width="8"/>
+  <circle cx="450" cy="375" r="47" stroke="white" stroke-width="8"/>
+  <path d="M188 335H242V416H188" stroke="white" stroke-width="8"/>
+  <path d="M712 335H658V416H712" stroke="white" stroke-width="8"/>
+  <path d="M64 512H836L800 550H100L64 512Z" fill="#14213D"/>
+  <g opacity=".25" stroke="#fff" stroke-width="6">
+    <path d="M92 247H806"/>
+    <path d="M105 302H793"/>
+    <path d="M117 357H781"/>
+    <path d="M129 412H769"/>
+  </g>
+  <g fill="#F8FAFC">
+    <circle cx="121" cy="88" r="10"/>
+    <circle cx="780" cy="88" r="10"/>
+    <circle cx="212" cy="61" r="7"/>
+    <circle cx="688" cy="61" r="7"/>
+  </g>
+</svg>

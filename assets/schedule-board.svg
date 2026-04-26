@@ -1,0 +1,27 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Football schedule board</title>
+  <desc id="desc">A modern scoreboard with match fixtures and stats.</desc>
+  <rect width="760" height="520" rx="34" fill="#E7F5FF"/>
+  <rect x="82" y="72" width="596" height="376" rx="28" fill="#14213D"/>
+  <rect x="120" y="112" width="520" height="70" rx="16" fill="#0CA678"/>
+  <rect x="120" y="210" width="520" height="58" rx="14" fill="#1F3A34"/>
+  <rect x="120" y="292" width="520" height="58" rx="14" fill="#1F3A34"/>
+  <rect x="120" y="374" width="300" height="34" rx="10" fill="#F59F00"/>
+  <g fill="white">
+    <circle cx="174" cy="147" r="20"/>
+    <circle cx="586" cy="147" r="20"/>
+    <rect x="238" y="132" width="116" height="14" rx="7"/>
+    <rect x="406" y="132" width="86" height="14" rx="7"/>
+    <rect x="238" y="154" width="68" height="10" rx="5" opacity=".72"/>
+    <rect x="454" y="154" width="38" height="10" rx="5" opacity=".72"/>
+    <rect x="158" y="232" width="130" height="12" rx="6" opacity=".78"/>
+    <rect x="472" y="232" width="130" height="12" rx="6" opacity=".78"/>
+    <rect x="158" y="314" width="130" height="12" rx="6" opacity=".78"/>
+    <rect x="472" y="314" width="130" height="12" rx="6" opacity=".78"/>
+  </g>
+  <g fill="#B2F2BB">
+    <rect x="342" y="224" width="76" height="28" rx="10"/>
+    <rect x="342" y="306" width="76" height="28" rx="10"/>
+  </g>
+  <path d="M82 448H678L636 486H124L82 448Z" fill="#071D18"/>
+</svg>

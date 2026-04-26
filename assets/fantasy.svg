@@ -1,0 +1,28 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fantasy football dashboard</title>
+  <desc id="desc">Player cards, performance bars, and a tactical board.</desc>
+  <rect width="720" height="520" rx="32" fill="#F5F7F6"/>
+  <rect x="52" y="58" width="616" height="404" rx="24" fill="white" stroke="#DDE5DF" stroke-width="3"/>
+  <rect x="92" y="96" width="244" height="326" rx="20" fill="#0CA678"/>
+  <path d="M114 128H314V390H114V128Z" stroke="white" stroke-width="6"/>
+  <circle cx="214" cy="259" r="42" stroke="white" stroke-width="6"/>
+  <path d="M214 128V390" stroke="white" stroke-width="5"/>
+  <g fill="#14213D">
+    <circle cx="214" cy="172" r="14"/>
+    <circle cx="164" cy="238" r="14"/>
+    <circle cx="264" cy="238" r="14"/>
+    <circle cx="214" cy="336" r="14"/>
+  </g>
+  <rect x="372" y="98" width="106" height="150" rx="14" fill="#E7F5FF" stroke="#91A7FF" stroke-width="3"/>
+  <rect x="502" y="98" width="106" height="150" rx="14" fill="#E6FCF5" stroke="#63E6BE" stroke-width="3"/>
+  <rect x="372" y="274" width="236" height="36" rx="8" fill="#E9ECEF"/>
+  <rect x="372" y="330" width="190" height="36" rx="8" fill="#E9ECEF"/>
+  <rect x="372" y="386" width="214" height="36" rx="8" fill="#E9ECEF"/>
+  <rect x="392" y="292" width="150" height="10" rx="5" fill="#087F5B"/>
+  <rect x="392" y="348" width="114" height="10" rx="5" fill="#F59F00"/>
+  <rect x="392" y="404" width="132" height="10" rx="5" fill="#2563EB"/>
+  <circle cx="425" cy="148" r="27" fill="#14213D"/>
+  <path d="M390 219C395 187 455 187 460 219" stroke="#14213D" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="555" cy="148" r="27" fill="#087F5B"/>
+  <path d="M520 219C525 187 585 187 590 219" stroke="#087F5B" stroke-width="14" stroke-linecap="round"/>
+</svg>

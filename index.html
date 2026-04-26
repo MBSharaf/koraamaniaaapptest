@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportHub | منصة كورة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              cairo: ["Cairo", "Segoe UI", "Tahoma", "Arial", "sans-serif"],
+            },
+            colors: {
+              sport: {
+                50: "#f1fbf4",
+                100: "#d3f9d8",
+                500: "#12b886",
+                600: "#099268",
+                700: "#087f5b",
+                950: "#071d18",
+              },
+            },
+            boxShadow: {
+              sport: "0 24px 68px rgba(8, 127, 91, 0.16)",
+              glass: "0 18px 50px rgba(7, 29, 24, 0.09)",
+            },
+            borderRadius: {
+              app: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen overflow-x-hidden bg-sport-50 font-cairo text-slate-950 antialiased">
+    <div class="app-shell min-h-screen">
+      <aside class="sidebar" id="mobile-sidebar" aria-label="التنقل الرئيسي">
+        <div class="brand flex items-center gap-3">
+          <span class="brand-mark grid place-items-center" aria-hidden="true">S</span>
+          <div>
+            <strong>SportHub</strong>
+            <small>منصة كورة واحدة</small>
+          </div>
+        </div>
+
+        <nav class="nav-list grid gap-2.5">
+          <button class="nav-item active" type="button" data-section="home" title="الرئيسية">
+            <span aria-hidden="true">⌂</span>
+            <b>الرئيسية</b>
+          </button>
+          <button class="nav-item" type="button" data-section="venues" title="حجز الملاعب">
+            <span aria-hidden="true">⚽</span>
+            <b>حجز الملاعب</b>
+          </button>
+          <button class="nav-item" type="button" data-section="pickup" title="دور على ماتش">
+            <span aria-hidden="true">⇄</span>
+            <b>دور على ماتش</b>
+          </button>
+          <button class="nav-item" type="button" data-section="fantasy" title="الفانتازي">
+            <span aria-hidden="true">♜</span>
+            <b>الفانتازي</b>
+          </button>
+          <button class="nav-item" type="button" data-section="training" title="التمارين">
+            <span aria-hidden="true">▣</span>
+            <b>التمارين</b>
+          </button>
+          <button class="nav-item" type="button" data-section="store" title="المتجر">
+            <span aria-hidden="true">⌑</span>
+            <b>المتجر</b>
+          </button>
+          <button class="nav-item" type="button" data-section="schedule" title="الجداول">
+            <span aria-hidden="true">▤</span>
+            <b>الجداول</b>
+          </button>
+        </nav>
+
+        <div class="side-card mt-auto">
+          <small>محفظتك</small>
+          <strong data-wallet-balance>EGP 1,240</strong>
+          <span>جاهزة للحجز والفانتازي</span>
+        </div>
+      </aside>
+      <button class="sidebar-overlay" type="button" aria-label="إغلاق القائمة"></button>
+
+      <main class="main-content min-w-0">
+        <header class="topbar flex items-center justify-between gap-4">
+          <div class="topbar-title">
+            <button class="sidebar-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-sidebar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div>
+              <p class="eyebrow">لوحة التحكم</p>
+              <h1 id="page-title">الرئيسية</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <label class="search-box flex items-center gap-2">
+              <span aria-hidden="true">⌕</span>
+              <input type="search" placeholder="ابحث عن ملعب، ماتش، لاعب..." />
+            </label>
+            <select aria-label="اختيار المحافظة">
+              <option>القاهرة</option>
+              <option>الجيزة</option>
+              <option>الإسكندرية</option>
+              <option>الدقهلية</option>
+            </select>
+            <button class="icon-button" type="button" title="الإشعارات">◉</button>
+          </div>
+        </header>
+
+        <section class="app-section active" id="home" aria-labelledby="home-title">
+          <div class="home-grid grid gap-4">
+            <article class="hero-panel relative isolate overflow-hidden">
+              <div class="motion-lines" aria-hidden="true"></div>
+              <div class="hero-copy">
+                <p class="eyebrow">SportHub Beta</p>
+                <h2 id="home-title">كل حاجة للكورة في مكان واحد</h2>
+                <p>احجز ملعب، ادخل ماتش، تابع الجداول، وابني فريقك في الفانتازي من نفس الداشبورد.</p>
+                <div class="hero-cta-row flex flex-wrap gap-2.5">
+                  <button class="primary-button" type="button" data-section="venues">احجز ملعب الآن</button>
+                  <button class="ghost-button hero-secondary" type="button" data-section="pickup">شوف ماتشات قريبة</button>
+                </div>
+                <div class="hero-metrics grid gap-3">
+                  <span><b>24</b> ملعب متاح</span>
+                  <span><b>18</b> ماتش مفتوح</span>
+                  <span><b>6</b> دوريات</span>
+                </div>
+              </div>
+              <img src="https://images.unsplash.com/photo-1735736158949-a22521878828?auto=format&fit=crop&w=1200&q=80" alt="صورة ملعب كرة قدم حقيقي مضاء ليلا" />
+            </article>
+
+            <article class="live-ticker overflow-hidden" aria-label="تحديثات مباشرة">
+              <div class="ticker-track flex items-center">
+                <span>Live: الأهلي 2 - 1 بيراميدز</span>
+                <span>3 أماكن فاضية في ماتش مدينة نصر</span>
+                <span>خصم 15% على أحذية Turf</span>
+                <span>Fantasy deadline بعد ساعتين</span>
+                <span>تمرين مقترح: سرعة وانطلاق</span>
+              </div>
+            </article>
+
+            <article class="panel quick-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">Quick Actions</p>
+                  <h2>ابدأ بسرعة</h2>
+                </div>
+              </div>
+              <div class="quick-actions grid gap-3">
+                <button type="button" data-section="venues"><span>⚽</span><b>حجز ملعب</b></button>
+                <button type="button" data-section="pickup"><span>⇄</span><b>دور على ماتش</b></button>
+                <button type="button" data-section="training"><span>▣</span><b>ابدأ التمرين</b></button>
+                <button type="button" data-section="fantasy"><span>♜</span><b>الفانتازي</b></button>
+                <button type="button" data-section="store"><span>⌑</span><b>المتجر</b></button>
+              </div>
+            </article>
+
+            <article class="panel home-venues-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">ملاعب قريبة</p>
+                  <h2>ملاعب تقدر تحجزها الآن</h2>
+                </div>
+                <button class="ghost-button" type="button" data-section="venues">عرض كل الملاعب</button>
+              </div>
+              <div class="home-horizontal grid gap-3.5" id="home-venues"></div>
+            </article>
+
+            <article class="panel home-pickup-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">ماتشات مفتوحة</p>
+                  <h2>أقرب ماتشات تقدر تلعب فيها</h2>
+                </div>
+                <button class="ghost-button" type="button" data-section="pickup">كل الماتشات</button>
+              </div>
+              <div class="home-list grid gap-2.5" id="home-pickups"></div>
+            </article>
+
+            <article class="panel home-fantasy-ad rounded-app border border-white/20 shadow-sport backdrop-blur-xl transition duration-300 hover:-translate-y-1">
+              <div class="fantasy-copy">
+                <p class="eyebrow">Fantasy League</p>
+                <h2>ادخل الجولة قبل القفل</h2>
+                <p>اختار كابتن، نافس أصحابك، واكسب Rewards مع كل Streak.</p>
+                <div class="promo-stats grid gap-2">
+                  <span><b>2x</b> كابتن</span>
+                  <span><b>438</b> أعلى score</span>
+                </div>
+                <button class="primary-button" type="button" data-section="fantasy">ادخل الفانتازي</button>
+              </div>
+              <img src="assets/fantasy.svg" alt="إعلان لعبة الفانتازي" />
+            </article>
+
+            <article class="panel home-training-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">تمرينك</p>
+                  <h2>إحصائيات آخر أسبوع</h2>
+                </div>
+                <button class="ghost-button" type="button" data-section="training">ابدأ تمرين</button>
+              </div>
+              <div class="training-stats grid gap-2">
+                <span><b>4</b> جلسات</span>
+                <span><b>128</b> دقيقة</span>
+                <span><b>6</b> أيام Streak</span>
+              </div>
+              <div class="training-mini">
+                <div>
+                  <strong>الجلسة المقترحة</strong>
+                  <small>سرعة وانطلاق / 28 دقيقة</small>
+                </div>
+                <button class="small-button" type="button" data-session-id="speed" data-section="training">ابدأ</button>
+              </div>
+            </article>
+
+            <article class="panel home-store-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">المتجر</p>
+                  <h2>منتجات وأقسام مختارة</h2>
+                </div>
+                <button class="ghost-button" type="button" data-section="store">افتح المتجر</button>
+              </div>
+              <div class="store-categories grid gap-2">
+                <span>أحذية</span>
+                <span>ملابس</span>
+                <span>كرات</span>
+                <span>إكسسوارات</span>
+              </div>
+              <div class="home-horizontal compact-products grid gap-3.5" id="home-products"></div>
+            </article>
+
+            <article class="panel home-ads-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
+              <div class="section-head flex items-center justify-between gap-3">
+                <div>
+                  <p class="eyebrow">إعلانات</p>
+                  <h2>مساحات رعاة</h2>
+                </div>
+              </div>
+              <div class="ad-stack grid gap-2.5">
+                <div class="ad-card primary-ad">
+                  <small>Sponsored</small>
+                  <strong>مساحة إعلان رئيسية</strong>
+                  <span>هنا يظهر إعلان شركة أو عرض خاص بالملاعب.</span>
+                </div>
+                <div class="ad-card">
+                  <small>Partner Offer</small>
+                  <strong>خصم معدات تدريب</strong>
+                  <span>عرض مخصص للاعبين النشطين هذا الأسبوع.</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel matches-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">اليوم</p>
+                  <h2>ماتشات اليوم</h2>
+                </div>
+                <button class="ghost-button" type="button" data-section="schedule">كل الجداول</button>
+              </div>
+              <div class="match-list">
+                <div class="match-row">
+                  <span class="team">الأهلي</span>
+                  <strong>2 - 1</strong>
+                  <span class="team">بيراميدز</span>
+                  <small class="live">Live 78'</small>
+                </div>
+                <div class="match-row">
+                  <span class="team">الزمالك</span>
+                  <strong>20:00</strong>
+                  <span class="team">المصري</span>
+                  <small>الدوري</small>
+                </div>
+                <div class="match-row">
+                  <span class="team">سيتي</span>
+                  <strong>22:00</strong>
+                  <span class="team">ليفربول</span>
+                  <small>إنجليزي</small>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel highlight-panel">
+              <img src="assets/fantasy.svg" alt="بطاقات لاعبين فانتازي" />
+              <div>
+                <p class="eyebrow">Highlights</p>
+                <h2>أفضل كابتن للجولة</h2>
+                <p>اقتراح ذكي: مهاجم بسعر متوسط ونسبة امتلاك قليلة.</p>
+                <button class="primary-button" type="button" data-section="fantasy">افتح الفانتازي</button>
+              </div>
+            </article>
+
+            <article class="panel mini-panel">
+              <p class="eyebrow">الحجز القادم</p>
+              <h2>ملعب النخيل</h2>
+              <p>الخميس، 8:00 مساء، 5 ضد 5</p>
+              <span class="status-pill confirmed">مؤكد</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="app-section" id="venues" aria-labelledby="venues-title">
+          <div class="content-grid wide-left">
+            <div class="stack">
+              <article class="panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">حجز الملاعب</p>
+                    <h2 id="venues-title">اختار ملعب ووقت</h2>
+                  </div>
+                  <span class="status-pill">1% مصاريف إدارية</span>
+                </div>
+                <div class="filters">
+                  <label>
+                    المحافظة
+                    <select id="city-filter">
+                      <option>القاهرة</option>
+                      <option>الجيزة</option>
+                      <option>الإسكندرية</option>
+                    </select>
+                  </label>
+                  <label>
+                    المنطقة
+                    <select id="area-filter">
+                      <option>مدينة نصر</option>
+                      <option>المعادي</option>
+                      <option>الشيخ زايد</option>
+                    </select>
+                  </label>
+                  <label>
+                    التاريخ
+                    <input type="date" id="booking-date" />
+                  </label>
+                </div>
+              </article>
+
+              <div class="venue-grid" id="venue-list"></div>
+            </div>
+
+            <aside class="stack">
+              <article class="panel map-panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Map</p>
+                    <h2>الملاعب القريبة</h2>
+                  </div>
+                </div>
+                <div class="map-mock" aria-label="خريطة تقريبية للملاعب">
+                  <span class="map-pin pin-a">A</span>
+                  <span class="map-pin pin-b">B</span>
+                  <span class="map-pin pin-c">C</span>
+                </div>
+              </article>
+
+              <article class="panel checkout-panel">
+                <p class="eyebrow">ملخص الحجز</p>
+                <h2 id="selected-venue">اختار ملعب</h2>
+                <dl class="summary-list">
+                  <div>
+                    <dt>الوقت</dt>
+                    <dd id="selected-slot">لم يتم الاختيار</dd>
+                  </div>
+                  <div>
+                    <dt>السعر</dt>
+                    <dd id="booking-price">EGP 0</dd>
+                  </div>
+                  <div>
+                    <dt>مصاريف إدارية</dt>
+                    <dd id="booking-fee">EGP 0</dd>
+                  </div>
+                  <div class="summary-total">
+                    <dt>الإجمالي</dt>
+                    <dd id="booking-total">EGP 0</dd>
+                  </div>
+                </dl>
+                <div class="wallet-mini">
+                  <span>رصيد المحفظة</span>
+                  <strong data-wallet-balance>EGP 1,240</strong>
+                </div>
+                <button class="primary-button full" type="button" id="confirm-booking" disabled>افتح الدفع</button>
+                <div class="success-box hidden" id="booking-success">
+                  <div class="qr-code" aria-label="QR الحجز">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <strong id="booking-code">SH-0000</strong>
+                </div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="pickup" aria-labelledby="pickup-title">
+          <div class="content-grid wide-left">
+            <div class="stack">
+              <article class="panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">دور على ماتش</p>
+                    <h2 id="pickup-title">ماتشات مفتوحة</h2>
+                  </div>
+                  <button class="ghost-button" type="button">اعمل ماتش جديد</button>
+                </div>
+                <div class="filters">
+                  <label>
+                    النوع
+                    <select>
+                      <option>5 ضد 5</option>
+                      <option>7 ضد 7</option>
+                      <option>11 ضد 11</option>
+                    </select>
+                  </label>
+                  <label>
+                    المستوى
+                    <select>
+                      <option>متوسط</option>
+                      <option>مبتدئ</option>
+                      <option>متقدم</option>
+                    </select>
+                  </label>
+                  <label>
+                    المنطقة
+                    <select>
+                      <option>كل المناطق</option>
+                      <option>مدينة نصر</option>
+                      <option>المعادي</option>
+                    </select>
+                  </label>
+                </div>
+              </article>
+              <div class="pickup-list" id="pickup-list"></div>
+            </div>
+
+            <aside class="panel checkout-panel sticky-panel">
+              <p class="eyebrow">تأكيد الانضمام</p>
+              <h2 id="pickup-name">اختار ماتش</h2>
+              <dl class="summary-list">
+                <div>
+                  <dt>الفريق</dt>
+                  <dd id="pickup-team">لم يتم الاختيار</dd>
+                </div>
+                <div>
+                  <dt>المساهمة</dt>
+                  <dd id="pickup-cost">EGP 0</dd>
+                </div>
+              </dl>
+              <button class="primary-button full" type="button" id="confirm-pickup" disabled>ادفع وانضم</button>
+              <div class="success-box hidden" id="pickup-success">
+                <strong>تم تأكيد مكانك</strong>
+                <span>وصل لك كود الدخول على الإشعارات.</span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="fantasy" aria-labelledby="fantasy-title">
+          <div class="fantasy-peach-shell" id="fantasy-peach-app">
+            <article class="fantasy-peach-hero">
+              <div>
+                <p class="eyebrow">Egypt Fantasy League</p>
+                <h2 id="fantasy-title">فانتازي الدوري المصري</h2>
+                <p>كوّن فريقك من 11 لاعب، اختار الكابتن، ادخل جروبات أصحابك، واشترك في بطولات أسبوعية بجوائز.</p>
+              </div>
+              <div class="fantasy-team-card">
+                <small>اسم الفريق</small>
+                <strong id="fantasy-team-name">سجّل فريقك</strong>
+                <button class="ghost-button" type="button" id="open-fantasy-register">تسجيل / تعديل</button>
+              </div>
+            </article>
+
+            <div class="fantasy-peach-layout">
+              <aside class="fantasy-side-panel">
+                <section class="fantasy-mini-card">
+                  <div class="section-head">
+                    <div>
+                      <p class="eyebrow">Points</p>
+                      <h3>نقاط وترتيب</h3>
+                    </div>
+                  </div>
+                  <div class="fantasy-rank-grid">
+                    <span><b id="fantasy-total-points">0</b> نقاط التشكيلة</span>
+                    <span><b id="fantasy-week-points">0</b> نقاط الأسبوع</span>
+                    <span><b id="fantasy-team-rank">--</b> ترتيبك العام</span>
+                  </div>
+                </section>
+
+                <section class="fantasy-mini-card">
+                  <div class="section-head">
+                    <div>
+                      <p class="eyebrow">Groups</p>
+                      <h3>جروباتك</h3>
+                    </div>
+                    <button class="small-button" type="button" data-create-fantasy-group>جروب جديد</button>
+                  </div>
+                  <div class="fantasy-group-actions">
+                    <button class="ghost-button full" type="button" data-open-group-code>ادخل بكود</button>
+                  </div>
+                  <div class="fantasy-groups-list" id="fantasy-groups-list"></div>
+                </section>
+
+                <section class="fantasy-mini-card">
+                  <div class="section-head">
+                    <div>
+                      <p class="eyebrow">Competitions</p>
+                      <h3>البطولات</h3>
+                    </div>
+                  </div>
+                  <div class="fantasy-tournaments" id="fantasy-tournaments"></div>
+                </section>
+              </aside>
+
+              <section class="fantasy-pitch-panel">
+                <div class="fantasy-pitch-top">
+                  <div>
+                    <p class="eyebrow">Gameweek 1</p>
+                    <h3>اختار تشكيلتك الأساسية</h3>
+                  </div>
+                  <div class="fantasy-budget-pill">
+                    <span>Budget</span>
+                    <b id="fantasy-budget-left">100.0</b>
+                  </div>
+                </div>
+
+                <div class="fantasy-pitch">
+                  <div class="pitch-line gk-line" id="fantasy-line-gk"></div>
+                  <div class="pitch-line def-line" id="fantasy-line-def"></div>
+                  <div class="pitch-line mid-line" id="fantasy-line-mid"></div>
+                  <div class="pitch-line fwd-line" id="fantasy-line-fwd"></div>
+                </div>
+
+                <div class="fantasy-bench-panel">
+                  <div class="section-head">
+                    <div>
+                      <p class="eyebrow">Substitutes</p>
+                      <h3>التبديلات</h3>
+                    </div>
+                  </div>
+                  <div class="fantasy-bench" id="fantasy-bench"></div>
+                </div>
+              </section>
+
+              <aside class="fantasy-status-panel">
+                <section class="fantasy-mini-card">
+                  <div class="section-head">
+                    <div>
+                      <p class="eyebrow">Status</p>
+                      <h3>ملخص الجولة</h3>
+                    </div>
+                  </div>
+                  <div class="fantasy-status-grid">
+                    <span><b id="fantasy-status-week-points">0</b> نقاط الأسبوع</span>
+                    <span><b id="fantasy-deadline-countdown">--:--:--</b> للغلق</span>
+                  </div>
+                </section>
+
+                <section class="fantasy-mini-card">
+                  <p class="eyebrow">Fixtures</p>
+                  <h3>أهم ماتشات الجولة</h3>
+                  <div class="fantasy-feed" id="fantasy-fixtures"></div>
+                </section>
+
+                <section class="fantasy-mini-card">
+                  <p class="eyebrow">Scout</p>
+                  <h3>ترشيحات ومخاطر</h3>
+                  <div class="fantasy-feed" id="fantasy-scout-feed"></div>
+                </section>
+
+                <section class="fantasy-mini-card">
+                  <p class="eyebrow">Winners</p>
+                  <h3>فائزين البطولات</h3>
+                  <div class="fantasy-feed" id="fantasy-winners-feed"></div>
+                </section>
+              </aside>
+            </div>
+
+            <section class="fantasy-leaderboard-wide">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Competition</p>
+                  <h3>ترتيب المنافسة العامة</h3>
+                </div>
+              </div>
+              <div class="fantasy-leaderboard-table" id="fantasy-main-leaderboard"></div>
+            </section>
+          </div>
+
+          <div class="content-grid fantasy-layout legacy-fantasy">
+            <div class="stack">
+              <article class="panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">الفانتازي</p>
+                    <h2 id="fantasy-title">ابني فريق الجولة</h2>
+                  </div>
+                  <div class="budget-meter">
+                    <span>Budget</span>
+                    <strong id="budget-left">100.0</strong>
+                  </div>
+                </div>
+                <div class="filters">
+                  <label>
+                    المركز
+                    <select id="position-filter">
+                      <option value="all">كل المراكز</option>
+                      <option value="GK">حارس</option>
+                      <option value="DEF">دفاع</option>
+                      <option value="MID">وسط</option>
+                      <option value="FWD">هجوم</option>
+                    </select>
+                  </label>
+                  <label>
+                    النادي
+                    <select id="club-filter">
+                      <option value="all">كل النوادي</option>
+                      <option value="الأهلي">الأهلي</option>
+                      <option value="الزمالك">الزمالك</option>
+                      <option value="بيراميدز">بيراميدز</option>
+                      <option value="المصري">المصري</option>
+                    </select>
+                  </label>
+                  <label>
+                    السعر
+                    <select id="price-filter">
+                      <option value="all">أي سعر</option>
+                      <option value="budget">أقل من 8</option>
+                      <option value="premium">8 أو أكثر</option>
+                    </select>
+                  </label>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>اللاعب</th>
+                        <th>المركز</th>
+                        <th>النادي</th>
+                        <th>السعر</th>
+                        <th>نقاط</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="players-table"></tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+
+            <aside class="stack">
+              <article class="panel roster-panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Squad</p>
+                    <h2>فريقك</h2>
+                  </div>
+                  <span class="status-pill" id="squad-count">0/7</span>
+                </div>
+                <div id="squad-list" class="squad-list empty-state">اختار لاعبين من الجدول</div>
+                <label class="captain-select">
+                  الكابتن
+                  <select id="captain-select">
+                    <option value="">لم يتم الاختيار</option>
+                  </select>
+                </label>
+              </article>
+
+              <article class="panel ai-panel">
+                <img src="assets/fantasy.svg" alt="تحليل فانتازي ذكي" />
+                <div>
+                  <p class="eyebrow">AI Suggestions</p>
+                  <h2>أفضل اختيارات</h2>
+                  <ul>
+                    <li>كابتن: علي سامي</li>
+                    <li>Differential: كريم فؤاد</li>
+                    <li>تبديل ذكي: وسط بسعر 6.5</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="panel leaderboard-panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Leaderboard</p>
+                    <h2>جروب الأصحاب</h2>
+                  </div>
+                  <button class="ghost-button" type="button" id="group-code">كود: HAT90</button>
+                </div>
+                <ol class="leaderboard">
+                  <li><span>محمود</span><b>438</b></li>
+                  <li><span>سارة</span><b>421</b></li>
+                  <li><span>أنت</span><b id="user-score">0</b></li>
+                </ol>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="training" aria-labelledby="training-title">
+          <div class="content-grid wide-left">
+            <div class="stack">
+              <article class="training-hero">
+                <div>
+                  <p class="eyebrow">ابدأ التمرين</p>
+                  <h2 id="training-title">جلسات جاهزة حسب هدفك</h2>
+                  <p>سرعة، لياقة، تحكم في الكرة، وتسديد. اختار جلسة وابدأ متابعة التقدم.</p>
+                </div>
+                <img src="assets/training.svg" alt="لاعب يؤدي تمرين كرة قدم" />
+              </article>
+              <div class="training-grid" id="training-list"></div>
+            </div>
+            <aside class="panel checkout-panel sticky-panel">
+              <p class="eyebrow">الجلسة الحالية</p>
+              <h2 id="session-name">لم تبدأ جلسة</h2>
+              <div class="progress-track">
+                <span id="session-progress"></span>
+              </div>
+              <dl class="summary-list">
+                <div>
+                  <dt>المدة</dt>
+                  <dd id="session-duration">0 دقيقة</dd>
+                </div>
+                <div>
+                  <dt>الشدة</dt>
+                  <dd id="session-level">-</dd>
+                </div>
+              </dl>
+              <button class="primary-button full" type="button" id="complete-session">إنهاء الجلسة</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="store" aria-labelledby="store-title">
+          <div class="content-grid wide-left">
+            <div class="stack">
+              <article class="panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">المتجر</p>
+                    <h2 id="store-title">منتجات جاهزة للشراء</h2>
+                  </div>
+                  <div class="segmented">
+                    <button type="button" class="active">الكل</button>
+                    <button type="button">أحذية</button>
+                    <button type="button">ملابس</button>
+                    <button type="button">إكسسوارات</button>
+                  </div>
+                </div>
+              </article>
+              <div class="product-grid" id="product-list"></div>
+            </div>
+            <aside class="panel checkout-panel sticky-panel">
+              <p class="eyebrow">سلة الشراء</p>
+              <h2><span id="cart-count">0</span> منتج</h2>
+              <div id="cart-list" class="cart-list empty-state">السلة فارغة</div>
+              <dl class="summary-list">
+                <div class="summary-total">
+                  <dt>الإجمالي</dt>
+                  <dd id="cart-total">EGP 0</dd>
+                </div>
+              </dl>
+              <button class="primary-button full" type="button">شراء الآن</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="schedule" aria-labelledby="schedule-title">
+          <div class="stack">
+            <article class="panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">الجداول</p>
+                  <h2 id="schedule-title">مواعيد ونتائج المباريات</h2>
+                </div>
+                <label class="inline-filter">
+                  الدوري
+                  <select>
+                    <option>الدوري المصري</option>
+                    <option>الدوري الإنجليزي</option>
+                    <option>دوري الأبطال</option>
+                  </select>
+                </label>
+              </div>
+              <div class="tabs" role="tablist" aria-label="جدول المباريات">
+                <button class="tab active" type="button" data-tab="matches">Matches</button>
+                <button class="tab" type="button" data-tab="standings">Standings</button>
+                <button class="tab" type="button" data-tab="stats">Stats</button>
+              </div>
+            </article>
+
+            <div class="schedule-grid">
+              <article class="panel tab-panel active" id="tab-matches">
+                <div class="match-card detailed">
+                  <div class="match-scoreline">
+                    <span>الأهلي</span>
+                    <strong>2 - 1</strong>
+                    <span>بيراميدز</span>
+                  </div>
+                  <div class="event-timeline">
+                    <span>12' هدف</span>
+                    <span>44' كارت</span>
+                    <span>63' تبديل</span>
+                    <span>78' هدف</span>
+                  </div>
+                  <div class="stats-grid">
+                    <span><b>58%</b> استحواذ</span>
+                    <span><b>13</b> تسديدات</span>
+                    <span><b>5</b> ركنيات</span>
+                  </div>
+                </div>
+                <div class="match-card">
+                  <div class="match-scoreline">
+                    <span>الزمالك</span>
+                    <strong>20:00</strong>
+                    <span>المصري</span>
+                  </div>
+                  <small>التشكيل يظهر قبل المباراة بساعة</small>
+                </div>
+              </article>
+
+              <article class="panel tab-panel" id="tab-standings">
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>النادي</th>
+                        <th>لعب</th>
+                        <th>فارق</th>
+                        <th>نقاط</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>1</td><td>الأهلي</td><td>19</td><td>+24</td><td>45</td></tr>
+                      <tr><td>2</td><td>بيراميدز</td><td>19</td><td>+18</td><td>42</td></tr>
+                      <tr><td>3</td><td>الزمالك</td><td>18</td><td>+14</td><td>38</td></tr>
+                      <tr><td>4</td><td>المصري</td><td>19</td><td>+9</td><td>34</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+
+              <article class="panel tab-panel" id="tab-stats">
+                <div class="stats-columns">
+                  <div>
+                    <h3>الهدافين</h3>
+                    <ol class="leaderboard">
+                      <li><span>وسام أبو علي</span><b>14</b></li>
+                      <li><span>فيستون مايلي</span><b>12</b></li>
+                      <li><span>مصطفى شلبي</span><b>10</b></li>
+                    </ol>
+                  </div>
+                  <div>
+                    <h3>أسيست</h3>
+                    <ol class="leaderboard">
+                      <li><span>إمام عاشور</span><b>9</b></li>
+                      <li><span>عبدالله السعيد</span><b>8</b></li>
+                      <li><span>رمضان صبحي</span><b>7</b></li>
+                    </ol>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="booking-modal hidden" id="venue-details-modal" role="dialog" aria-modal="true" aria-labelledby="venue-details-title">
+      <div class="booking-modal-card venue-details-card">
+        <button class="fantasy-modal-close" type="button" data-close-booking-modal aria-label="إغلاق">×</button>
+        <div id="venue-details-content"></div>
+      </div>
+    </div>
+
+    <div class="booking-modal hidden" id="booking-payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+      <div class="booking-modal-card payment-modal-card">
+        <button class="fantasy-modal-close" type="button" data-close-booking-modal aria-label="إغلاق">×</button>
+        <p class="eyebrow">Payment</p>
+        <h2 id="payment-title">اختار طريقة الدفع</h2>
+        <div class="payment-booking-head">
+          <div>
+            <strong id="payment-context-title">اسم الملعب</strong>
+            <span id="payment-context-meta">تفاصيل الحجز</span>
+          </div>
+        </div>
+        <dl class="summary-list payment-summary">
+          <div>
+            <dt>السعر</dt>
+            <dd id="payment-subtotal">EGP 0</dd>
+          </div>
+          <div>
+            <dt>مصاريف إدارية</dt>
+            <dd id="payment-fee">EGP 0</dd>
+          </div>
+          <div class="summary-total">
+            <dt>الإجمالي</dt>
+            <dd id="payment-total">EGP 0</dd>
+          </div>
+          <div>
+            <dt>رصيد المحفظة</dt>
+            <dd id="payment-wallet-balance">EGP 0</dd>
+          </div>
+        </dl>
+        <div class="payment-method-grid" role="group" aria-label="طرق الدفع">
+          <button type="button" class="payment-choice active" data-payment-method="wallet">المحفظة</button>
+          <button type="button" class="payment-choice" data-payment-method="visa">Visa</button>
+          <button type="button" class="payment-choice" data-payment-method="vodafone">Vodafone Cash</button>
+        </div>
+        <p class="payment-note" id="payment-method-note">سيتم خصم المبلغ من محفظتك بعد نافذة التأكيد.</p>
+        <button class="primary-button full" type="button" id="payment-confirm">تأكيد الدفع</button>
+      </div>
+    </div>
+
+    <div class="booking-modal hidden" id="wallet-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="wallet-confirm-title">
+      <div class="booking-modal-card wallet-confirm-card">
+        <button class="fantasy-modal-close" type="button" data-close-booking-modal aria-label="إغلاق">×</button>
+        <p class="eyebrow">Wallet Confirmation</p>
+        <h2 id="wallet-confirm-title">تأكيد الدفع من المحفظة</h2>
+        <p>سيتم خصم <strong id="wallet-confirm-total">EGP 0</strong> من رصيد محفظتك الحالي <strong id="wallet-confirm-balance">EGP 0</strong>.</p>
+        <div class="wallet-confirm-actions">
+          <button class="ghost-button" type="button" data-close-booking-modal>رجوع</button>
+          <button class="primary-button" type="button" id="wallet-confirm-pay">ادفع من المحفظة</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fantasy-modal hidden" id="fantasy-register-modal" role="dialog" aria-modal="true" aria-labelledby="fantasy-register-title">
+      <div class="fantasy-modal-card fantasy-register-card">
+        <button class="fantasy-modal-close" type="button" data-close-fantasy-modal aria-label="إغلاق">×</button>
+        <p class="eyebrow">Fantasy Register</p>
+        <h2 id="fantasy-register-title">سجّل في فانتازي الدوري المصري</h2>
+        <p>اكتب اسم فريقك الأول. بعد التسجيل هتقدر تختار التشكيلة وتدخل الجروبات والبطولات.</p>
+        <form id="fantasy-register-form" class="fantasy-form">
+          <label>
+            اسم الفريق
+            <input id="fantasy-team-input" type="text" maxlength="28" placeholder="مثال: ملوك الجولة" required />
+          </label>
+          <button class="primary-button full" type="submit">ابدأ الفانتازي</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="fantasy-modal hidden" id="fantasy-player-modal" role="dialog" aria-modal="true" aria-labelledby="fantasy-player-modal-title">
+      <div class="fantasy-modal-card fantasy-player-picker">
+        <button class="fantasy-modal-close" type="button" data-close-fantasy-modal aria-label="إغلاق">×</button>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Choose Player</p>
+            <h2 id="fantasy-player-modal-title">اختار لاعب</h2>
+          </div>
+        </div>
+        <div class="fantasy-player-list" id="fantasy-player-list"></div>
+      </div>
+    </div>
+
+    <div class="fantasy-modal hidden" id="fantasy-details-modal" role="dialog" aria-modal="true" aria-labelledby="fantasy-details-title">
+      <div class="fantasy-modal-card fantasy-details-card">
+        <button class="fantasy-modal-close" type="button" data-close-fantasy-modal aria-label="إغلاق">×</button>
+        <div id="fantasy-player-details"></div>
+      </div>
+    </div>
+
+    <div class="fantasy-modal hidden" id="fantasy-group-code-modal" role="dialog" aria-modal="true" aria-labelledby="fantasy-group-code-title">
+      <div class="fantasy-modal-card">
+        <button class="fantasy-modal-close" type="button" data-close-fantasy-modal aria-label="إغلاق">×</button>
+        <p class="eyebrow">Join Group</p>
+        <h2 id="fantasy-group-code-title">ادخل كود الجروب</h2>
+        <form id="fantasy-group-code-form" class="fantasy-form">
+          <label>
+            كود الجروب
+            <input id="fantasy-group-code-input" type="text" maxlength="12" placeholder="مثال: EGPL-90" required />
+          </label>
+          <button class="primary-button full" type="submit">دخول الجروب</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
