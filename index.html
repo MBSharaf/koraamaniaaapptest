@@ -39,7 +39,131 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="min-h-screen overflow-x-hidden bg-sport-50 font-cairo text-slate-950 antialiased">
+  <body class="auth-locked min-h-screen overflow-x-hidden bg-sport-50 font-cairo text-slate-950 antialiased">
+    <section class="auth-screen" id="auth-screen" aria-labelledby="auth-title">
+      <div class="auth-visual">
+        <div class="auth-brand">
+          <span class="brand-mark grid place-items-center" aria-hidden="true">S</span>
+          <div>
+            <strong>SportHub</strong>
+            <small>منصة كورة واحدة</small>
+          </div>
+        </div>
+        <div class="auth-copy">
+          <p class="eyebrow">Football Super App</p>
+          <h1 id="auth-title">كل خدمات الكورة تبدأ من حساب واحد</h1>
+          <p>احجز ملعب، ادخل ماتش، العب فانتازي، اشحن محفظتك، وتابع الجداول من تجربة واحدة.</p>
+        </div>
+        <div class="auth-metrics">
+          <span><b>24</b> ملعب متاح</span>
+          <span><b>18</b> ماتش مفتوح</span>
+          <span><b>6</b> دوريات</span>
+        </div>
+      </div>
+
+      <div class="auth-panel" aria-live="polite">
+        <div class="auth-tabs" role="tablist" aria-label="اختيار الدخول أو إنشاء حساب">
+          <button class="active" type="button" data-auth-mode="login">Login</button>
+          <button type="button" data-auth-mode="signup">Sign Up</button>
+        </div>
+
+        <form class="auth-form active" id="login-form" data-auth-form="login">
+          <div>
+            <p class="eyebrow">Welcome Back</p>
+            <h2>تسجيل الدخول</h2>
+            <p>ادخل بياناتك للرجوع إلى SportHub.</p>
+          </div>
+          <label>
+            البريد الإلكتروني
+            <input id="login-email" type="email" autocomplete="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            كلمة المرور
+            <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+          </label>
+          <div class="auth-role-group" aria-label="الدخول كـ">
+            <button class="active" type="button" data-auth-login-role="user">User</button>
+            <button type="button" data-auth-login-role="admin">Admin</button>
+          </div>
+          <p class="form-error hidden" id="login-error">اكتب البريد الإلكتروني وكلمة المرور.</p>
+          <button class="primary-button full" type="submit">دخول</button>
+        </form>
+
+        <form class="auth-form" id="signup-form" data-auth-form="signup">
+          <div>
+            <p class="eyebrow">Create Account</p>
+            <h2>إنشاء حساب جديد</h2>
+            <p>اختار نوع الحساب، وبعدها هنوجهك للمكان المناسب.</p>
+          </div>
+          <label>
+            الاسم
+            <input id="signup-name" type="text" autocomplete="name" placeholder="اكتب اسمك" required />
+          </label>
+          <label>
+            البريد الإلكتروني
+            <input id="signup-email" type="email" autocomplete="email" placeholder="name@example.com" required />
+          </label>
+          <label>
+            كلمة المرور
+            <input id="signup-password" type="password" autocomplete="new-password" minlength="4" placeholder="على الأقل 4 حروف" required />
+          </label>
+          <div class="auth-role-group auth-signup-roles" aria-label="نوع الحساب">
+            <button class="active" type="button" data-auth-signup-role="user">
+              <strong>User</strong>
+              <span>يدخل التطبيق الحالي</span>
+            </button>
+            <button type="button" data-auth-signup-role="admin">
+              <strong>Admin</strong>
+              <span>يدخل داشبورد الإدارة</span>
+            </button>
+          </div>
+          <p class="form-error hidden" id="signup-error">كمل بيانات إنشاء الحساب الأول.</p>
+          <button class="primary-button full" type="submit">إنشاء الحساب</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="admin-dashboard" id="admin-dashboard" aria-labelledby="admin-title">
+      <div class="admin-dashboard-inner">
+        <header class="admin-topbar">
+          <div>
+            <p class="eyebrow">SportHub Admin</p>
+            <h1 id="admin-title">لوحة تحكم الإدارة</h1>
+          </div>
+          <button class="ghost-button" type="button" data-auth-logout>تسجيل خروج</button>
+        </header>
+        <article class="admin-hero panel">
+          <div>
+            <p class="eyebrow">Coming Next</p>
+            <h2>داشبورد الإدارة جاهز كمرحلة تالية</h2>
+            <p>هنا هنضيف إدارة الملاعب، الطلبات، المدفوعات، المستخدمين، إعلانات الشركات، ومتابعة كل العمليات.</p>
+          </div>
+          <div class="admin-user-card">
+            <span>Admin Account</span>
+            <strong id="admin-user-name">SportHub Admin</strong>
+            <small id="admin-user-email">admin@sporthub.app</small>
+          </div>
+        </article>
+        <div class="admin-card-grid">
+          <article class="panel admin-stat-card">
+            <span>Bookings</span>
+            <strong>128</strong>
+            <small>حجوزات هذا الأسبوع</small>
+          </article>
+          <article class="panel admin-stat-card">
+            <span>Payments</span>
+            <strong>EGP 42K</strong>
+            <small>إجمالي المدفوعات</small>
+          </article>
+          <article class="panel admin-stat-card">
+            <span>Users</span>
+            <strong>2,480</strong>
+            <small>مستخدمين نشطين</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <div class="app-shell min-h-screen">
       <aside class="sidebar" id="mobile-sidebar" aria-label="التنقل الرئيسي">
         <div class="brand flex items-center gap-3">
@@ -67,10 +191,6 @@
             <span aria-hidden="true">♜</span>
             <b>الفانتازي</b>
           </button>
-          <button class="nav-item" type="button" data-section="training" title="التمارين">
-            <span aria-hidden="true">▣</span>
-            <b>التمارين</b>
-          </button>
           <button class="nav-item" type="button" data-section="store" title="المتجر">
             <span aria-hidden="true">⌑</span>
             <b>المتجر</b>
@@ -79,13 +199,17 @@
             <span aria-hidden="true">▤</span>
             <b>الجداول</b>
           </button>
+          <button class="nav-item" type="button" data-section="wallet" title="المحفظة">
+            <span aria-hidden="true">▣</span>
+            <b>المحفظة</b>
+          </button>
         </nav>
 
-        <div class="side-card mt-auto">
+        <button class="side-card wallet-side-card mt-auto" type="button" data-section="wallet">
           <small>محفظتك</small>
           <strong data-wallet-balance>EGP 1,240</strong>
           <span>جاهزة للحجز والفانتازي</span>
-        </div>
+        </button>
       </aside>
       <button class="sidebar-overlay" type="button" aria-label="إغلاق القائمة"></button>
 
@@ -144,7 +268,6 @@
                 <span>3 أماكن فاضية في ماتش مدينة نصر</span>
                 <span>خصم 15% على أحذية Turf</span>
                 <span>Fantasy deadline بعد ساعتين</span>
-                <span>تمرين مقترح: سرعة وانطلاق</span>
               </div>
             </article>
 
@@ -158,7 +281,6 @@
               <div class="quick-actions grid gap-3">
                 <button type="button" data-section="venues"><span>⚽</span><b>حجز ملعب</b></button>
                 <button type="button" data-section="pickup"><span>⇄</span><b>دور على ماتش</b></button>
-                <button type="button" data-section="training"><span>▣</span><b>ابدأ التمرين</b></button>
                 <button type="button" data-section="fantasy"><span>♜</span><b>الفانتازي</b></button>
                 <button type="button" data-section="store"><span>⌑</span><b>المتجر</b></button>
               </div>
@@ -198,28 +320,6 @@
                 <button class="primary-button" type="button" data-section="fantasy">ادخل الفانتازي</button>
               </div>
               <img src="assets/fantasy.svg" alt="إعلان لعبة الفانتازي" />
-            </article>
-
-            <article class="panel home-training-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
-              <div class="section-head flex items-center justify-between gap-3">
-                <div>
-                  <p class="eyebrow">تمرينك</p>
-                  <h2>إحصائيات آخر أسبوع</h2>
-                </div>
-                <button class="ghost-button" type="button" data-section="training">ابدأ تمرين</button>
-              </div>
-              <div class="training-stats grid gap-2">
-                <span><b>4</b> جلسات</span>
-                <span><b>128</b> دقيقة</span>
-                <span><b>6</b> أيام Streak</span>
-              </div>
-              <div class="training-mini">
-                <div>
-                  <strong>الجلسة المقترحة</strong>
-                  <small>سرعة وانطلاق / 28 دقيقة</small>
-                </div>
-                <button class="small-button" type="button" data-session-id="speed" data-section="training">ابدأ</button>
-              </div>
             </article>
 
             <article class="panel home-store-panel rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
@@ -719,40 +819,6 @@
           </div>
         </section>
 
-        <section class="app-section" id="training" aria-labelledby="training-title">
-          <div class="content-grid wide-left">
-            <div class="stack">
-              <article class="training-hero">
-                <div>
-                  <p class="eyebrow">ابدأ التمرين</p>
-                  <h2 id="training-title">جلسات جاهزة حسب هدفك</h2>
-                  <p>سرعة، لياقة، تحكم في الكرة، وتسديد. اختار جلسة وابدأ متابعة التقدم.</p>
-                </div>
-                <img src="assets/training.svg" alt="لاعب يؤدي تمرين كرة قدم" />
-              </article>
-              <div class="training-grid" id="training-list"></div>
-            </div>
-            <aside class="panel checkout-panel sticky-panel">
-              <p class="eyebrow">الجلسة الحالية</p>
-              <h2 id="session-name">لم تبدأ جلسة</h2>
-              <div class="progress-track">
-                <span id="session-progress"></span>
-              </div>
-              <dl class="summary-list">
-                <div>
-                  <dt>المدة</dt>
-                  <dd id="session-duration">0 دقيقة</dd>
-                </div>
-                <div>
-                  <dt>الشدة</dt>
-                  <dd id="session-level">-</dd>
-                </div>
-              </dl>
-              <button class="primary-button full" type="button" id="complete-session">إنهاء الجلسة</button>
-            </aside>
-          </div>
-        </section>
-
         <section class="app-section" id="store" aria-labelledby="store-title">
           <div class="content-grid wide-left">
             <div class="stack">
@@ -788,6 +854,71 @@
               <button class="primary-button full" type="button" id="cart-checkout" disabled>Checkout</button>
               <div class="success-box hidden" id="store-success"></div>
             </aside>
+          </div>
+        </section>
+
+        <section class="app-section" id="wallet" aria-labelledby="wallet-title">
+          <div class="wallet-shell stack">
+            <article class="wallet-hero panel">
+              <div>
+                <p class="eyebrow">Wallet</p>
+                <h2 id="wallet-title">محفظتك في SportHub</h2>
+                <p>اشحن رصيدك واستخدمه في حجز الملاعب، الانضمام للماتشات، وطلبات المتجر.</p>
+              </div>
+              <div class="wallet-balance-card">
+                <span>الرصيد الحالي</span>
+                <strong data-wallet-balance>EGP 1,240</strong>
+                <small>آخر تحديث لحظي بعد كل عملية</small>
+              </div>
+            </article>
+
+            <div class="content-grid wide-left wallet-grid">
+              <article class="panel wallet-topup-panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Top Up</p>
+                    <h2>ضيف رصيد للمحفظة</h2>
+                  </div>
+                  <span class="admin-fee-pill">1% مصاريف إدارية</span>
+                </div>
+                <div class="wallet-quick-amounts" id="wallet-quick-amounts">
+                  <button type="button" data-wallet-amount="100">EGP 100</button>
+                  <button type="button" data-wallet-amount="250">EGP 250</button>
+                  <button type="button" data-wallet-amount="500">EGP 500</button>
+                  <button type="button" data-wallet-amount="1000">EGP 1,000</button>
+                </div>
+                <label class="wallet-amount-field">
+                  المبلغ
+                  <input id="wallet-topup-amount" type="number" min="10" step="10" inputmode="numeric" placeholder="اكتب المبلغ" />
+                </label>
+                <dl class="summary-list wallet-topup-summary">
+                  <div>
+                    <dt>المبلغ</dt>
+                    <dd id="wallet-topup-subtotal">EGP 0</dd>
+                  </div>
+                  <div>
+                    <dt>مصاريف إدارية</dt>
+                    <dd id="wallet-topup-fee">EGP 0</dd>
+                  </div>
+                  <div class="summary-total">
+                    <dt>إجمالي الدفع</dt>
+                    <dd id="wallet-topup-total">EGP 0</dd>
+                  </div>
+                </dl>
+                <button class="primary-button full" type="button" id="wallet-topup-button">ضيف رصيد</button>
+                <div class="success-box hidden" id="wallet-success"></div>
+              </article>
+
+              <aside class="panel wallet-transactions-panel sticky-panel">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Transactions</p>
+                    <h2>سجل المعاملات</h2>
+                  </div>
+                </div>
+                <div class="wallet-transactions-list" id="wallet-transactions-list"></div>
+              </aside>
+            </div>
           </div>
         </section>
 

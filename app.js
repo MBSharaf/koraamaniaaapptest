@@ -3,9 +3,9 @@ const sectionTitles = {
   venues: "حجز الملاعب",
   pickup: "دور على ماتش",
   fantasy: "الفانتازي",
-  training: "التمارين",
   store: "المتجر",
   schedule: "الجداول",
+  wallet: "المحفظة",
 };
 
 const fieldPhotos = {
@@ -248,33 +248,6 @@ const players = [
   { id: 22, name: "مروان حمدي", position: "FWD", club: "المصري", price: 7.5, points: 58, form: 6.8, status: "جاهز" },
   { id: 23, name: "صلاح محسن", position: "FWD", club: "المصري", price: 6.8, points: 50, form: 6.1, status: "جاهز" },
   { id: 24, name: "كهربا", position: "FWD", club: "الأهلي", price: 8.0, points: 56, form: 6.9, status: "شكوك" },
-];
-
-const sessions = [
-  {
-    id: "speed",
-    name: "سرعة وانطلاق",
-    duration: 28,
-    level: "متوسط",
-    progress: 35,
-    exercises: ["Sprint 10x", "تغيير اتجاه", "استشفاء قصير"],
-  },
-  {
-    id: "touch",
-    name: "تحكم بالكرة",
-    duration: 35,
-    level: "مبتدئ",
-    progress: 45,
-    exercises: ["Cone Dribble", "لمسة واحدة", "تمرير قصير"],
-  },
-  {
-    id: "finish",
-    name: "تسديد وإنهاء",
-    duration: 42,
-    level: "متقدم",
-    progress: 60,
-    exercises: ["تسديد من الحركة", "One touch", "ركلات حرة"],
-  },
 ];
 
 const products = [
@@ -592,6 +565,13 @@ const scheduleStats = [
 ];
 
 const state = {
+  auth: {
+    mode: "login",
+    signupRole: "user",
+    loginRole: "user",
+    currentUser: null,
+    accounts: [],
+  },
   selectedVenueId: null,
   selectedSlot: null,
   selectedVenueModalId: null,
@@ -608,6 +588,10 @@ const state = {
     day: "all",
   },
   walletBalance: 1240,
+  walletTopupAmount: 100,
+  walletTransactions: [
+    { id: "tx-start", type: "credit", title: "رصيد افتتاحي", amount: 1240, meta: "محفظة SportHub", date: "اليوم 09:00" },
+  ],
   payment: {
     context: null,
     method: "wallet",
@@ -688,6 +672,116 @@ function syncWalletUi() {
   });
 }
 
+function addWalletTransaction(transaction) {
+  state.walletTransactions.unshift({
+    id: `tx-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    date: "الآن",
+    ...transaction,
+  });
+  renderWalletTransactions();
+}
+
+function getWalletTopupTotals() {
+  const amount = Math.max(0, Number(state.walletTopupAmount) || 0);
+  const fee = Math.round(amount * 0.01);
+  return { amount, fee, total: amount + fee };
+}
+
+function setAuthMode(mode) {
+  state.auth.mode = mode;
+  document.querySelectorAll("[data-auth-mode]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.authMode === mode);
+  });
+  document.querySelectorAll("[data-auth-form]").forEach((form) => {
+    form.classList.toggle("active", form.dataset.authForm === mode);
+  });
+}
+
+function updateAuthRoleButtons(scope) {
+  const selector = scope === "login" ? "[data-auth-login-role]" : "[data-auth-signup-role]";
+  const key = scope === "login" ? "authLoginRole" : "authSignupRole";
+  const activeRole = scope === "login" ? state.auth.loginRole : state.auth.signupRole;
+  document.querySelectorAll(selector).forEach((button) => {
+    button.classList.toggle("active", button.dataset[key] === activeRole);
+  });
+}
+
+function setAuthError(id, message = "") {
+  const error = document.getElementById(id);
+  if (!error) return;
+  if (message) error.textContent = message;
+  error.classList.toggle("hidden", !message);
+}
+
+function routeAuthenticatedUser(user) {
+  state.auth.currentUser = user;
+  document.body.classList.remove("auth-locked", "app-mode", "admin-mode", "sidebar-open");
+  closeBookingModals();
+  closeFantasyModals();
+
+  if (user.role === "admin") {
+    document.body.classList.add("admin-mode");
+    document.getElementById("admin-user-name").textContent = user.name || "SportHub Admin";
+    document.getElementById("admin-user-email").textContent = user.email || "admin@sporthub.app";
+    window.scrollTo({ top: 0, behavior: "auto" });
+    return;
+  }
+
+  document.body.classList.add("app-mode");
+  setSidebarOpen(false);
+  showSection("home");
+}
+
+function resetAuth() {
+  state.auth.currentUser = null;
+  document.body.classList.remove("app-mode", "admin-mode", "sidebar-open");
+  document.body.classList.add("auth-locked");
+  setAuthMode("login");
+  setAuthError("login-error");
+  setAuthError("signup-error");
+  const loginPassword = document.getElementById("login-password");
+  const signupPassword = document.getElementById("signup-password");
+  if (loginPassword) loginPassword.value = "";
+  if (signupPassword) signupPassword.value = "";
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function handleLoginSubmit(event) {
+  event.preventDefault();
+  const email = document.getElementById("login-email")?.value.trim();
+  const password = document.getElementById("login-password")?.value.trim();
+
+  if (!email || !password) {
+    setAuthError("login-error", "اكتب البريد الإلكتروني وكلمة المرور.");
+    return;
+  }
+
+  const account = state.auth.accounts.find((item) => item.email === email);
+  const role = account?.role || state.auth.loginRole;
+  routeAuthenticatedUser({
+    name: account?.name || (role === "admin" ? "SportHub Admin" : "SportHub User"),
+    email,
+    role,
+  });
+}
+
+function handleSignupSubmit(event) {
+  event.preventDefault();
+  const name = document.getElementById("signup-name")?.value.trim();
+  const email = document.getElementById("signup-email")?.value.trim();
+  const password = document.getElementById("signup-password")?.value.trim();
+
+  if (!name || !email || !password || password.length < 4) {
+    setAuthError("signup-error", "كمل الاسم والبريد وكلمة المرور على الأقل 4 حروف.");
+    return;
+  }
+
+  const user = { name, email, role: state.auth.signupRole };
+  state.auth.accounts = state.auth.accounts.filter((account) => account.email !== email);
+  state.auth.accounts.push(user);
+  routeAuthenticatedUser(user);
+}
+
 function getCartItems() {
   return state.cart
     .map((item) => ({
@@ -719,6 +813,8 @@ function showSection(sectionId) {
     if (!state.fantasy.registered) {
       setTimeout(openFantasyRegistration, 180);
     }
+  } else if (sectionId === "wallet") {
+    renderWallet();
   }
 }
 
@@ -906,7 +1002,7 @@ function openPaymentModal(context) {
     ...context,
     total: context.subtotal + context.fee,
   };
-  state.payment.method = "wallet";
+  state.payment.method = context.disallowWallet ? "visa" : "wallet";
   hydratePaymentCustomerForm();
   renderPaymentModal();
   showBookingModal("booking-payment-modal");
@@ -945,6 +1041,7 @@ function collectPaymentCustomer() {
 
 function validatePaymentCustomer(showErrors = false) {
   const context = state.payment.context;
+  if (context?.skipCustomer) return true;
   const customer = collectPaymentCustomer();
   const requiredFields = ["name", "phone"];
   if (context?.type === "store-checkout") requiredFields.push("address");
@@ -981,6 +1078,19 @@ function renderPaymentModal() {
   document.getElementById("payment-total").textContent = formatMoney(context.total);
   document.getElementById("payment-wallet-balance").textContent = formatMoney(state.walletBalance);
 
+  const paymentCard = document.querySelector(".payment-modal-card");
+  const customerForm = document.getElementById("payment-customer-form");
+  const walletMethod = document.querySelector('[data-payment-method="wallet"]');
+  const skipCustomer = Boolean(context.skipCustomer);
+  const disallowWallet = Boolean(context.disallowWallet);
+
+  paymentCard?.classList.toggle("payment-no-customer", skipCustomer);
+  customerForm?.classList.toggle("hidden", skipCustomer);
+  walletMethod?.classList.toggle("hidden", disallowWallet);
+  if (disallowWallet && state.payment.method === "wallet") {
+    state.payment.method = "visa";
+  }
+
   document.querySelectorAll("[data-payment-method]").forEach((button) => {
     button.classList.toggle("active", button.dataset.paymentMethod === state.payment.method);
   });
@@ -1000,7 +1110,10 @@ function renderPaymentModal() {
     addressInput.placeholder = storeCheckout ? "المحافظة، المنطقة، الشارع، رقم العمارة" : "اختياري للحجز أو الانضمام";
   }
 
-  if (walletSelected && !enoughWallet) {
+  if (context.type === "wallet-topup") {
+    note.textContent = "اختر Visa أو Vodafone Cash. سيتم إضافة المبلغ للمحفظة بعد تأكيد الدفع.";
+    confirm.disabled = false;
+  } else if (walletSelected && !enoughWallet) {
     note.textContent = "رصيد المحفظة غير كافي لإتمام العملية. اختار فيزا أو فودافون كاش.";
     confirm.disabled = true;
   } else if (!customerValid) {
@@ -1043,6 +1156,8 @@ function completePayment() {
     finalizePickupJoin();
   } else if (context.type === "store-checkout") {
     finalizeStoreCheckout();
+  } else if (context.type === "wallet-topup") {
+    finalizeWalletTopup();
   }
 
   state.payment.context = null;
@@ -1057,6 +1172,15 @@ function finalizeVenueBooking() {
   if (slot) slot.available = false;
 
   const code = `SH-${Math.floor(1000 + Math.random() * 9000)}`;
+  const context = state.payment.context;
+  if (context) {
+    addWalletTransaction({
+      type: state.payment.method === "wallet" ? "debit" : "external",
+      title: `حجز ${venue.name}`,
+      amount: context.total,
+      meta: `${state.selectedSlot} · كود ${code}`,
+    });
+  }
   document.getElementById("booking-code").textContent = code;
   document.getElementById("booking-success").classList.remove("hidden");
   closeBookingModals();
@@ -1072,6 +1196,15 @@ function finalizePickupJoin() {
   if (team && team.openSlots > 0) team.openSlots -= 1;
 
   const code = `MT-${Math.floor(1000 + Math.random() * 9000)}`;
+  const context = state.payment.context;
+  if (context) {
+    addWalletTransaction({
+      type: state.payment.method === "wallet" ? "debit" : "external",
+      title: `انضمام ${match.name}`,
+      amount: context.total,
+      meta: `${state.selectedPickupTeam} · كود ${code}`,
+    });
+  }
   const success = document.getElementById("pickup-success");
   success.innerHTML = `
     <strong>تم تأكيد مكانك</strong>
@@ -1088,6 +1221,15 @@ function finalizeStoreCheckout() {
   const code = `OR-${Math.floor(1000 + Math.random() * 9000)}`;
   const success = document.getElementById("store-success");
   const customer = state.payment.customer;
+  const context = state.payment.context;
+  if (context) {
+    addWalletTransaction({
+      type: state.payment.method === "wallet" ? "debit" : "external",
+      title: "طلب من المتجر",
+      amount: context.total,
+      meta: `كود الطلب ${code}`,
+    });
+  }
   success.innerHTML = `
     <strong>تم تأكيد الطلب</strong>
     <span>كود الطلب: ${code}. سيتم تجهيز المنتجات باسم ${customer.name || "العميل"} للتوصيل.</span>
@@ -1097,6 +1239,30 @@ function finalizeStoreCheckout() {
   closeBookingModals();
   renderCart();
   renderHome();
+}
+
+function finalizeWalletTopup() {
+  const context = state.payment.context;
+  if (!context) return;
+  state.walletBalance += context.subtotal;
+  addWalletTransaction({
+    type: "credit",
+    title: "شحن المحفظة",
+    amount: context.subtotal,
+    meta: `${state.payment.method === "visa" ? "Visa" : "Vodafone Cash"} · مصاريف ${formatMoney(context.fee)}`,
+  });
+  const success = document.getElementById("wallet-success");
+  if (success) {
+    success.innerHTML = `
+      <strong>تم شحن المحفظة</strong>
+      <span>تم إضافة ${formatMoney(context.subtotal)} إلى رصيدك.</span>
+    `;
+    success.classList.remove("hidden");
+  }
+  state.walletTopupAmount = 100;
+  closeBookingModals();
+  syncWalletUi();
+  renderWallet();
 }
 
 function filteredPickupMatches() {
@@ -1757,37 +1923,6 @@ function renderFantasy() {
   renderSquad();
 }
 
-function renderTraining() {
-  document.getElementById("training-list").innerHTML = sessions
-    .map(
-      (session) => `
-        <article class="training-card rounded-app border border-white/70 shadow-glass backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-sport">
-          <div class="card-title-row">
-            <div>
-              <h3>${session.name}</h3>
-              <span class="meta-line">${session.duration} دقيقة · ${session.level}</span>
-            </div>
-            <span class="status-pill">${session.progress}%</span>
-          </div>
-          <ul class="exercise-list">
-            ${session.exercises.map((exercise) => `<li>${exercise}</li>`).join("")}
-          </ul>
-          <button class="primary-button full" type="button" data-session-id="${session.id}">ابدأ</button>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function setActiveSession(sessionId) {
-  const session = sessions.find((item) => item.id === sessionId);
-  if (!session) return;
-  document.getElementById("session-name").textContent = session.name;
-  document.getElementById("session-duration").textContent = `${session.duration} دقيقة`;
-  document.getElementById("session-level").textContent = session.level;
-  document.getElementById("session-progress").style.width = `${session.progress}%`;
-}
-
 function filteredStoreProducts() {
   if (state.store.activeCategory === "all") return products;
   return products.filter((product) => product.category === state.store.activeCategory);
@@ -1943,6 +2078,64 @@ function openStoreCheckout() {
   });
 }
 
+function renderWalletTopupSummary() {
+  const input = document.getElementById("wallet-topup-amount");
+  if (input && document.activeElement !== input) input.value = state.walletTopupAmount || "";
+  const { amount, fee, total } = getWalletTopupTotals();
+  document.getElementById("wallet-topup-subtotal").textContent = formatMoney(amount);
+  document.getElementById("wallet-topup-fee").textContent = formatMoney(fee);
+  document.getElementById("wallet-topup-total").textContent = formatMoney(total);
+  document.getElementById("wallet-topup-button").disabled = amount < 10;
+  document.querySelectorAll("[data-wallet-amount]").forEach((button) => {
+    button.classList.toggle("active", Number(button.dataset.walletAmount) === amount);
+  });
+}
+
+function renderWalletTransactions() {
+  const list = document.getElementById("wallet-transactions-list");
+  if (!list) return;
+  if (!state.walletTransactions.length) {
+    list.innerHTML = `<div class="empty-state">لا توجد معاملات بعد.</div>`;
+    return;
+  }
+
+  list.innerHTML = state.walletTransactions
+    .map(
+      (transaction) => `
+        <article class="wallet-transaction ${transaction.type}">
+          <span>${transaction.type === "credit" ? "+" : transaction.type === "debit" ? "-" : "•"}</span>
+          <div>
+            <strong>${transaction.title}</strong>
+            <small>${transaction.meta} · ${transaction.date}</small>
+          </div>
+          <b>${formatMoney(transaction.amount)}</b>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function renderWallet() {
+  syncWalletUi();
+  renderWalletTopupSummary();
+  renderWalletTransactions();
+}
+
+function openWalletTopupPayment() {
+  const { amount, fee } = getWalletTopupTotals();
+  if (amount < 10) return;
+  openPaymentModal({
+    type: "wallet-topup",
+    title: "شحن المحفظة",
+    meta: `إضافة ${formatMoney(amount)} إلى محفظتك`,
+    subtotal: amount,
+    fee,
+    successText: "تم شحن المحفظة",
+    skipCustomer: true,
+    disallowWallet: true,
+  });
+}
+
 function signedNumber(value) {
   return value > 0 ? `+${value}` : String(value);
 }
@@ -2086,6 +2279,31 @@ function renderSchedule() {
 
 function bindEvents() {
   document.addEventListener("click", (event) => {
+    const authModeButton = event.target.closest("[data-auth-mode]");
+    if (authModeButton) {
+      setAuthMode(authModeButton.dataset.authMode);
+      return;
+    }
+
+    const loginRoleButton = event.target.closest("[data-auth-login-role]");
+    if (loginRoleButton) {
+      state.auth.loginRole = loginRoleButton.dataset.authLoginRole;
+      updateAuthRoleButtons("login");
+      return;
+    }
+
+    const signupRoleButton = event.target.closest("[data-auth-signup-role]");
+    if (signupRoleButton) {
+      state.auth.signupRole = signupRoleButton.dataset.authSignupRole;
+      updateAuthRoleButtons("signup");
+      return;
+    }
+
+    if (event.target.closest("[data-auth-logout]")) {
+      resetAuth();
+      return;
+    }
+
     const toggleButton = event.target.closest(".sidebar-toggle");
     if (toggleButton) {
       setSidebarOpen(!document.body.classList.contains("sidebar-open"));
@@ -2191,6 +2409,19 @@ function bindEvents() {
 
     if (event.target.closest("#cart-checkout")) {
       openStoreCheckout();
+      return;
+    }
+
+    const walletAmountButton = event.target.closest("[data-wallet-amount]");
+    if (walletAmountButton) {
+      state.walletTopupAmount = Number(walletAmountButton.dataset.walletAmount);
+      document.getElementById("wallet-success")?.classList.add("hidden");
+      renderWalletTopupSummary();
+      return;
+    }
+
+    if (event.target.closest("#wallet-topup-button")) {
+      openWalletTopupPayment();
       return;
     }
 
@@ -2321,12 +2552,6 @@ function bindEvents() {
       return;
     }
 
-    const sessionButton = event.target.closest("[data-session-id]");
-    if (sessionButton) {
-      setActiveSession(sessionButton.dataset.sessionId);
-      return;
-    }
-
     const productButton = event.target.closest("[data-product-id]");
     if (productButton) {
       addToCart(productButton.dataset.productId);
@@ -2351,9 +2576,18 @@ function bindEvents() {
     });
   });
 
+  document.getElementById("login-form")?.addEventListener("submit", handleLoginSubmit);
+  document.getElementById("signup-form")?.addEventListener("submit", handleSignupSubmit);
+
   document.getElementById("payment-customer-form")?.addEventListener("input", () => {
     collectPaymentCustomer();
     renderPaymentModal();
+  });
+
+  document.getElementById("wallet-topup-amount")?.addEventListener("input", (event) => {
+    state.walletTopupAmount = Number(event.target.value) || 0;
+    document.getElementById("wallet-success")?.classList.add("hidden");
+    renderWalletTopupSummary();
   });
 
   document.getElementById("confirm-booking")?.addEventListener("click", () => {
@@ -2373,10 +2607,6 @@ function bindEvents() {
   document.getElementById("confirm-pickup")?.addEventListener("click", () => {
     if (!state.selectedPickupId || !state.selectedPickupTeam) return;
     openPickupPayment(state.selectedPickupTeam);
-  });
-
-  document.getElementById("complete-session")?.addEventListener("click", () => {
-    document.getElementById("session-progress").style.width = "100%";
   });
 
   ["city-filter", "area-filter", "booking-date"].forEach((id) => {
@@ -2432,10 +2662,13 @@ function boot() {
   renderFantasy();
   updateFantasyCountdown();
   setInterval(updateFantasyCountdown, 60000);
-  renderTraining();
   renderProducts();
   renderCart();
   renderSchedule();
+  renderWallet();
+  setAuthMode("login");
+  updateAuthRoleButtons("login");
+  updateAuthRoleButtons("signup");
   bindEvents();
 }
 
