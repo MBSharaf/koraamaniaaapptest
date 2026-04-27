@@ -360,6 +360,237 @@ const products = [
   },
 ];
 
+const scheduleFixtures = [
+  {
+    id: "smouha-masry-0427",
+    day: "today",
+    dayLabel: "اليوم",
+    date: "الإثنين 27 أبريل",
+    round: "الجولة 4 - مجموعة التتويج",
+    home: "سموحة",
+    away: "المصري",
+    time: "17:00",
+    venue: "استاد السويس",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "راقب مهاجم المصري كاختيار اقتصادي",
+    importance: "صراع مراكز التتويج",
+  },
+  {
+    id: "zamalek-enppi-0427",
+    day: "today",
+    dayLabel: "اليوم",
+    date: "الإثنين 27 أبريل",
+    round: "الجولة 4 - مجموعة التتويج",
+    home: "الزمالك",
+    away: "إنبي",
+    time: "17:00",
+    venue: "استاد القاهرة الدولي",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "قائد الزمالك خيار كابتن قوي",
+    importance: "مباراة حسم للصدارة",
+  },
+  {
+    id: "pyramids-ahly-0427",
+    day: "today",
+    dayLabel: "اليوم",
+    date: "الإثنين 27 أبريل",
+    round: "الجولة 4 - مجموعة التتويج",
+    home: "بيراميدز",
+    away: "الأهلي",
+    time: "20:00",
+    venue: "استاد الدفاع الجوي",
+    status: "لم تبدأ",
+    channel: "ON Time Sports HD1",
+    fantasyTip: "أفضل كابتن للجولة من القمة",
+    importance: "قمة الجولة",
+  },
+  {
+    id: "petrojet-ismaily-0428",
+    day: "tomorrow",
+    dayLabel: "بكرة",
+    date: "الثلاثاء 28 أبريل",
+    round: "مجموعة الهبوط",
+    home: "بتروجيت",
+    away: "الإسماعيلي",
+    time: "14:00",
+    venue: "استاد بتروجيت",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "دفاع بتروجيت مناسب للـ clean sheet",
+    importance: "نقاط هروب مهمة",
+  },
+  {
+    id: "zed-pharco-0428",
+    day: "tomorrow",
+    dayLabel: "بكرة",
+    date: "الثلاثاء 28 أبريل",
+    round: "مجموعة الهبوط",
+    home: "زد",
+    away: "فاركو",
+    time: "14:00",
+    venue: "استاد القاهرة",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "لاعبو الوسط من زد عندهم upside عالي",
+    importance: "تثبيت مركز الأمان",
+  },
+  {
+    id: "mokawloon-mahalla-0428",
+    day: "tomorrow",
+    dayLabel: "بكرة",
+    date: "الثلاثاء 28 أبريل",
+    round: "مجموعة الهبوط",
+    home: "المقاولون العرب",
+    away: "غزل المحلة",
+    time: "17:00",
+    venue: "استاد المقاولون العرب",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "اختيار جريء من مهاجم المقاولون",
+    importance: "مواجهة مباشرة في القاع",
+  },
+  {
+    id: "kahrabaa-bank-0428",
+    day: "tomorrow",
+    dayLabel: "بكرة",
+    date: "الثلاثاء 28 أبريل",
+    round: "مجموعة الهبوط",
+    home: "كهرباء الإسماعيلية",
+    away: "البنك الأهلي",
+    time: "17:00",
+    venue: "استاد الإسماعيلية",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "حارس البنك الأهلي خيار آمن",
+    importance: "فارق النقاط ضيق",
+  },
+  {
+    id: "gouna-haras-0429",
+    day: "after",
+    dayLabel: "بعد بكرة",
+    date: "الأربعاء 29 أبريل",
+    round: "مجموعة الهبوط",
+    home: "الجونة",
+    away: "حرس الحدود",
+    time: "14:00",
+    venue: "استاد خالد بشارة",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "الجونة مرشح قوي لنقاط دفاعية",
+    importance: "الجونة يطارد صدارة المجموعة",
+  },
+  {
+    id: "modern-geish-0429",
+    day: "after",
+    dayLabel: "بعد بكرة",
+    date: "الأربعاء 29 أبريل",
+    round: "مجموعة الهبوط",
+    home: "مودرن سبورت",
+    away: "طلائع الجيش",
+    time: "17:00",
+    venue: "استاد السلام",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "متوسط مودرن سبورت differential",
+    importance: "مباراة كسر التعادل",
+  },
+  {
+    id: "degla-ittihad-0429",
+    day: "after",
+    dayLabel: "بعد بكرة",
+    date: "الأربعاء 29 أبريل",
+    round: "مجموعة الهبوط",
+    home: "وادي دجلة",
+    away: "الاتحاد السكندري",
+    time: "17:00",
+    venue: "استاد السلام",
+    status: "لم تبدأ",
+    channel: "ON Time Sports",
+    fantasyTip: "دجلة يقدم اختيارات budget للفانتازي",
+    importance: "قمة مجموعة الهبوط",
+  },
+];
+
+const championshipStandings = [
+  { rank: 1, team: "الزمالك", played: 2, won: 2, draw: 0, lost: 0, gf: 37, ga: 14, gd: 23, pts: 49 },
+  { rank: 2, team: "بيراميدز", played: 2, won: 0, draw: 1, lost: 1, gf: 34, ga: 17, gd: 17, pts: 44 },
+  { rank: 3, team: "الأهلي", played: 2, won: 1, draw: 1, lost: 0, gf: 36, ga: 21, gd: 15, pts: 44 },
+  { rank: 4, team: "سيراميكا كليوباترا", played: 3, won: 1, draw: 2, lost: 0, gf: 33, ga: 18, gd: 15, pts: 43 },
+  { rank: 5, team: "إنبي", played: 3, won: 1, draw: 2, lost: 0, gf: 25, ga: 19, gd: 6, pts: 35 },
+  { rank: 6, team: "المصري", played: 3, won: 0, draw: 2, lost: 1, gf: 33, ga: 27, gd: 6, pts: 34 },
+  { rank: 7, team: "سموحة", played: 3, won: 0, draw: 0, lost: 3, gf: 22, ga: 19, gd: 3, pts: 31 },
+];
+
+const relegationStandings = [
+  { rank: 1, team: "وادي دجلة", played: 6, won: 3, draw: 3, lost: 0, gf: 28, ga: 20, gd: 8, pts: 41 },
+  { rank: 2, team: "الجونة", played: 6, won: 2, draw: 3, lost: 1, gf: 18, ga: 16, gd: 2, pts: 37 },
+  { rank: 3, team: "البنك الأهلي", played: 6, won: 3, draw: 1, lost: 2, gf: 27, ga: 22, gd: 5, pts: 36 },
+  { rank: 4, team: "زد", played: 6, won: 2, draw: 1, lost: 3, gf: 28, ga: 23, gd: 5, pts: 36 },
+  { rank: 5, team: "بتروجيت", played: 6, won: 2, draw: 3, lost: 1, gf: 27, ga: 29, gd: -2, pts: 34 },
+  { rank: 6, team: "مودرن سبورت", played: 6, won: 1, draw: 4, lost: 1, gf: 22, ga: 28, gd: -6, pts: 30 },
+  { rank: 7, team: "غزل المحلة", played: 6, won: 2, draw: 4, lost: 0, gf: 19, ga: 19, gd: 0, pts: 29 },
+  { rank: 8, team: "طلائع الجيش", played: 6, won: 2, draw: 1, lost: 3, gf: 18, ga: 29, gd: -11, pts: 29 },
+  { rank: 9, team: "الاتحاد السكندري", played: 6, won: 1, draw: 5, lost: 0, gf: 21, ga: 29, gd: -8, pts: 28 },
+  { rank: 10, team: "المقاولون العرب", played: 6, won: 2, draw: 3, lost: 1, gf: 19, ga: 25, gd: -6, pts: 27 },
+  { rank: 11, team: "كهرباء الإسماعيلية", played: 6, won: 1, draw: 4, lost: 1, gf: 28, ga: 44, gd: -16, pts: 23 },
+  { rank: 12, team: "فاركو", played: 6, won: 1, draw: 2, lost: 3, gf: 12, ga: 29, gd: -17, pts: 20 },
+  { rank: 13, team: "حرس الحدود", played: 6, won: 0, draw: 3, lost: 3, gf: 20, ga: 38, gd: -18, pts: 20 },
+  { rank: 14, team: "الإسماعيلي", played: 6, won: 0, draw: 3, lost: 3, gf: 12, ga: 33, gd: -21, pts: 14 },
+];
+
+const regularSeasonStandings = [
+  { rank: 1, team: "الزمالك", played: 20, won: 13, draw: 4, lost: 3, gf: 32, ga: 13, gd: 19, pts: 43 },
+  { rank: 2, team: "بيراميدز", played: 20, won: 13, draw: 4, lost: 3, gf: 33, ga: 15, gd: 18, pts: 43 },
+  { rank: 3, team: "الأهلي", played: 20, won: 11, draw: 7, lost: 2, gf: 33, ga: 19, gd: 14, pts: 40 },
+  { rank: 4, team: "سيراميكا كليوباترا", played: 20, won: 11, draw: 5, lost: 4, gf: 29, ga: 16, gd: 13, pts: 38 },
+  { rank: 5, team: "المصري", played: 20, won: 8, draw: 8, lost: 4, gf: 29, ga: 20, gd: 9, pts: 32 },
+  { rank: 6, team: "سموحة", played: 20, won: 8, draw: 7, lost: 5, gf: 21, ga: 13, gd: 8, pts: 31 },
+  { rank: 7, team: "إنبي", played: 20, won: 7, draw: 9, lost: 4, gf: 20, ga: 16, gd: 4, pts: 30 },
+  { rank: 8, team: "زد", played: 20, won: 7, draw: 8, lost: 5, gf: 21, ga: 16, gd: 5, pts: 29 },
+  { rank: 9, team: "وادي دجلة", played: 20, won: 7, draw: 8, lost: 5, gf: 23, ga: 20, gd: 3, pts: 29 },
+  { rank: 10, team: "الجونة", played: 20, won: 6, draw: 10, lost: 4, gf: 16, ga: 15, gd: 1, pts: 28 },
+  { rank: 11, team: "البنك الأهلي", played: 20, won: 5, draw: 11, lost: 4, gf: 18, ga: 14, gd: 4, pts: 26 },
+  { rank: 12, team: "بتروجيت", played: 20, won: 5, draw: 10, lost: 5, gf: 21, ga: 23, gd: -2, pts: 25 },
+  { rank: 13, team: "مودرن سبورت", played: 20, won: 5, draw: 8, lost: 9, gf: 18, ga: 24, gd: -6, pts: 23 },
+  { rank: 14, team: "طلائع الجيش", played: 20, won: 5, draw: 7, lost: 8, gf: 14, ga: 24, gd: -10, pts: 22 },
+  { rank: 15, team: "الاتحاد السكندري", played: 20, won: 6, draw: 2, lost: 12, gf: 15, ga: 24, gd: -9, pts: 20 },
+  { rank: 16, team: "غزل المحلة", played: 20, won: 2, draw: 13, lost: 5, gf: 12, ga: 15, gd: -3, pts: 19 },
+  { rank: 17, team: "المقاولون العرب", played: 20, won: 3, draw: 9, lost: 8, gf: 13, ga: 21, gd: -8, pts: 18 },
+  { rank: 18, team: "حرس الحدود", played: 20, won: 4, draw: 5, lost: 11, gf: 15, ga: 29, gd: -14, pts: 17 },
+  { rank: 19, team: "كهرباء الإسماعيلية", played: 20, won: 4, draw: 4, lost: 12, gf: 22, ga: 37, gd: -15, pts: 16 },
+  { rank: 20, team: "فاركو", played: 20, won: 2, draw: 9, lost: 9, gf: 8, ga: 22, gd: -14, pts: 15 },
+  { rank: 21, team: "الإسماعيلي", played: 20, won: 3, draw: 2, lost: 15, gf: 11, ga: 28, gd: -17, pts: 11 },
+];
+
+const scheduleStats = [
+  {
+    title: "أفضل اختيارات الفانتازي",
+    items: [
+      ["كابتن مقترح", "قائد الزمالك"],
+      ["Differential", "مهاجم المصري"],
+      ["Budget", "لاعب وسط زد"],
+    ],
+  },
+  {
+    title: "مطاردات الجولة",
+    items: [
+      ["القمة", "بيراميدز × الأهلي"],
+      ["الحسم", "الزمالك × إنبي"],
+      ["الهروب", "بتروجيت × الإسماعيلي"],
+    ],
+  },
+  {
+    title: "أرقام سريعة",
+    items: [
+      ["فرق الدوري", "21"],
+      ["مجموعة التتويج", "7 فرق"],
+      ["مجموعة الهبوط", "14 فريق"],
+    ],
+  },
+];
+
 const state = {
   selectedVenueId: null,
   selectedSlot: null,
@@ -372,6 +603,9 @@ const state = {
   store: {
     activeCategory: "all",
     activeProductId: null,
+  },
+  schedule: {
+    day: "all",
   },
   walletBalance: 1240,
   payment: {
@@ -1709,6 +1943,147 @@ function openStoreCheckout() {
   });
 }
 
+function signedNumber(value) {
+  return value > 0 ? `+${value}` : String(value);
+}
+
+function renderScheduleKpis() {
+  const container = document.getElementById("schedule-kpis");
+  if (!container) return;
+  const todayCount = scheduleFixtures.filter((match) => match.day === "today").length;
+  container.innerHTML = `
+    <span><b>${todayCount}</b> مباريات اليوم</span>
+    <span><b>${championshipStandings[0].pts}</b> نقطة للمتصدر</span>
+    <span><b>${scheduleFixtures.length}</b> مباراة قادمة</span>
+  `;
+}
+
+function renderScheduleDayTabs() {
+  const container = document.getElementById("schedule-day-tabs");
+  if (!container) return;
+  const tabs = [
+    { key: "all", label: "الكل" },
+    { key: "today", label: "اليوم" },
+    { key: "tomorrow", label: "بكرة" },
+    { key: "after", label: "بعد بكرة" },
+  ];
+  container.innerHTML = tabs
+    .map((tab) => `<button type="button" class="${state.schedule.day === tab.key ? "active" : ""}" data-schedule-day="${tab.key}">${tab.label}</button>`)
+    .join("");
+}
+
+function filteredScheduleFixtures() {
+  if (state.schedule.day === "all") return scheduleFixtures;
+  return scheduleFixtures.filter((match) => match.day === state.schedule.day);
+}
+
+function renderScheduleMatches() {
+  const container = document.getElementById("schedule-match-grid");
+  if (!container) return;
+  renderScheduleDayTabs();
+
+  container.innerHTML = filteredScheduleFixtures()
+    .map(
+      (match) => `
+        <article class="schedule-match-card">
+          <div class="schedule-match-top">
+            <span>${match.dayLabel}</span>
+            <b>${match.date}</b>
+          </div>
+          <div class="schedule-team-line">
+            <strong>${match.home}</strong>
+            <span>${match.time}</span>
+            <strong>${match.away}</strong>
+          </div>
+          <div class="schedule-match-meta">
+            <span>${match.round}</span>
+            <span>${match.venue}</span>
+            <span>${match.channel}</span>
+          </div>
+          <div class="schedule-match-footer">
+            <small>${match.importance}</small>
+            <button class="fantasy-chip" type="button" data-section="fantasy">${match.fantasyTip}</button>
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function standingTable(rows, compact = false) {
+  return `
+    <table class="${compact ? "compact-standings" : ""}">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>الفريق</th>
+          <th>لعب</th>
+          <th>فاز</th>
+          <th>تعادل</th>
+          <th>خسر</th>
+          <th>له</th>
+          <th>عليه</th>
+          <th>+/-</th>
+          <th>نقاط</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows
+          .map(
+            (team) => `
+              <tr class="${team.rank <= 3 ? "top-row" : ""}">
+                <td>${team.rank}</td>
+                <td>${team.team}</td>
+                <td>${team.played}</td>
+                <td>${team.won}</td>
+                <td>${team.draw}</td>
+                <td>${team.lost}</td>
+                <td>${team.gf}</td>
+                <td>${team.ga}</td>
+                <td>${signedNumber(team.gd)}</td>
+                <td><strong>${team.pts}</strong></td>
+              </tr>
+            `,
+          )
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderScheduleStandings() {
+  const championship = document.getElementById("championship-standings");
+  const relegation = document.getElementById("relegation-standings");
+  const full = document.getElementById("full-standings-table");
+  if (championship) championship.innerHTML = standingTable(championshipStandings, true);
+  if (relegation) relegation.innerHTML = standingTable(relegationStandings, true);
+  if (full) full.innerHTML = standingTable(regularSeasonStandings);
+}
+
+function renderScheduleStats() {
+  const container = document.getElementById("schedule-stats-grid");
+  if (!container) return;
+  container.innerHTML = scheduleStats
+    .map(
+      (group) => `
+        <article class="schedule-stat-card">
+          <h4>${group.title}</h4>
+          <ul>
+            ${group.items.map(([label, value]) => `<li><span>${label}</span><b>${value}</b></li>`).join("")}
+          </ul>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function renderSchedule() {
+  renderScheduleKpis();
+  renderScheduleMatches();
+  renderScheduleStandings();
+  renderScheduleStats();
+}
+
 function bindEvents() {
   document.addEventListener("click", (event) => {
     const toggleButton = event.target.closest(".sidebar-toggle");
@@ -1816,6 +2191,13 @@ function bindEvents() {
 
     if (event.target.closest("#cart-checkout")) {
       openStoreCheckout();
+      return;
+    }
+
+    const scheduleDayButton = event.target.closest("[data-schedule-day]");
+    if (scheduleDayButton) {
+      state.schedule.day = scheduleDayButton.dataset.scheduleDay;
+      renderScheduleMatches();
       return;
     }
 
@@ -1954,9 +2336,10 @@ function bindEvents() {
 
     const tab = event.target.closest("[data-tab]");
     if (tab) {
-      document.querySelectorAll(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+      const tabName = tab.dataset.tab;
+      document.querySelectorAll(".tab").forEach((item) => item.classList.toggle("active", item.dataset.tab === tabName));
       document.querySelectorAll(".tab-panel").forEach((panel) => {
-        panel.classList.toggle("active", panel.id === `tab-${tab.dataset.tab}`);
+        panel.classList.toggle("active", panel.id === `tab-${tabName}`);
       });
     }
   });
@@ -2052,6 +2435,7 @@ function boot() {
   renderTraining();
   renderProducts();
   renderCart();
+  renderSchedule();
   bindEvents();
 }
 

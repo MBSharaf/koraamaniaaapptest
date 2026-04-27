@@ -792,23 +792,39 @@
         </section>
 
         <section class="app-section" id="schedule" aria-labelledby="schedule-title">
-          <div class="stack">
-            <article class="panel">
+          <div class="schedule-shell stack">
+            <article class="schedule-hero panel">
+              <div class="schedule-hero-copy">
+                <p class="eyebrow">Egyptian Premier League 2025/26</p>
+                <h2 id="schedule-title">مركز الجداول والمباريات</h2>
+                <p>مواعيد اليوم، ترتيب مجموعة التتويج والهبوط، وإشارات فانتازي تساعدك تختار كابتن الجولة.</p>
+                <div class="schedule-hero-actions">
+                  <button class="primary-button" type="button" data-section="fantasy">افتح الفانتازي</button>
+                  <button class="ghost-button" type="button" data-tab="standings">شوف الترتيب</button>
+                </div>
+              </div>
+              <div class="schedule-score-poster" aria-label="ملخص الجولة">
+                <span>Round 4</span>
+                <strong>27-29 Apr</strong>
+                <small>Fantasy deadline قبل أول ماتش بساعة</small>
+              </div>
+              <div class="schedule-kpis" id="schedule-kpis"></div>
+            </article>
+
+            <article class="panel schedule-control-panel">
               <div class="section-head">
                 <div>
                   <p class="eyebrow">الجداول</p>
-                  <h2 id="schedule-title">مواعيد ونتائج المباريات</h2>
+                  <h2>مواعيد ونتائج الدوري المصري</h2>
                 </div>
                 <label class="inline-filter">
                   الدوري
-                  <select>
-                    <option>الدوري المصري</option>
-                    <option>الدوري الإنجليزي</option>
-                    <option>دوري الأبطال</option>
+                  <select id="schedule-league-filter">
+                    <option>الدوري المصري 2025/26</option>
                   </select>
                 </label>
               </div>
-              <div class="tabs" role="tablist" aria-label="جدول المباريات">
+              <div class="tabs schedule-tabs" role="tablist" aria-label="جدول المباريات">
                 <button class="tab active" type="button" data-tab="matches">Matches</button>
                 <button class="tab" type="button" data-tab="standings">Standings</button>
                 <button class="tab" type="button" data-tab="stats">Stats</button>
@@ -817,75 +833,58 @@
 
             <div class="schedule-grid">
               <article class="panel tab-panel active" id="tab-matches">
-                <div class="match-card detailed">
-                  <div class="match-scoreline">
-                    <span>الأهلي</span>
-                    <strong>2 - 1</strong>
-                    <span>بيراميدز</span>
+                <div class="schedule-panel-head">
+                  <div>
+                    <p class="eyebrow">Fixtures</p>
+                    <h3>اليوم وبكرة وبعد بكرة</h3>
                   </div>
-                  <div class="event-timeline">
-                    <span>12' هدف</span>
-                    <span>44' كارت</span>
-                    <span>63' تبديل</span>
-                    <span>78' هدف</span>
-                  </div>
-                  <div class="stats-grid">
-                    <span><b>58%</b> استحواذ</span>
-                    <span><b>13</b> تسديدات</span>
-                    <span><b>5</b> ركنيات</span>
-                  </div>
+                  <div class="schedule-day-tabs" id="schedule-day-tabs"></div>
                 </div>
-                <div class="match-card">
-                  <div class="match-scoreline">
-                    <span>الزمالك</span>
-                    <strong>20:00</strong>
-                    <span>المصري</span>
-                  </div>
-                  <small>التشكيل يظهر قبل المباراة بساعة</small>
-                </div>
+                <div class="schedule-match-grid" id="schedule-match-grid"></div>
               </article>
 
               <article class="panel tab-panel" id="tab-standings">
-                <div class="table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>النادي</th>
-                        <th>لعب</th>
-                        <th>فارق</th>
-                        <th>نقاط</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>1</td><td>الأهلي</td><td>19</td><td>+24</td><td>45</td></tr>
-                      <tr><td>2</td><td>بيراميدز</td><td>19</td><td>+18</td><td>42</td></tr>
-                      <tr><td>3</td><td>الزمالك</td><td>18</td><td>+14</td><td>38</td></tr>
-                      <tr><td>4</td><td>المصري</td><td>19</td><td>+9</td><td>34</td></tr>
-                    </tbody>
-                  </table>
+                <div class="schedule-panel-head">
+                  <div>
+                    <p class="eyebrow">Standings</p>
+                    <h3>جدول ترتيب الدوري المصري 2026</h3>
+                  </div>
+                  <span class="schedule-updated" id="schedule-updated">آخر تحديث: 27 أبريل 2026</span>
                 </div>
+                <div class="standings-cards">
+                  <section class="standings-card">
+                    <div class="mini-section-head">
+                      <p class="eyebrow">Championship</p>
+                      <h4>مجموعة التتويج</h4>
+                    </div>
+                    <div class="table-wrap" id="championship-standings"></div>
+                  </section>
+                  <section class="standings-card">
+                    <div class="mini-section-head">
+                      <p class="eyebrow">Relegation</p>
+                      <h4>مجموعة الهبوط</h4>
+                    </div>
+                    <div class="table-wrap" id="relegation-standings"></div>
+                  </section>
+                </div>
+                <section class="standings-card full-table-card">
+                  <div class="mini-section-head">
+                    <p class="eyebrow">Regular Stage</p>
+                    <h4>المرحلة الأولى كاملة - 21 فريق</h4>
+                  </div>
+                  <div class="table-wrap" id="full-standings-table"></div>
+                </section>
               </article>
 
               <article class="panel tab-panel" id="tab-stats">
-                <div class="stats-columns">
+                <div class="schedule-panel-head">
                   <div>
-                    <h3>الهدافين</h3>
-                    <ol class="leaderboard">
-                      <li><span>وسام أبو علي</span><b>14</b></li>
-                      <li><span>فيستون مايلي</span><b>12</b></li>
-                      <li><span>مصطفى شلبي</span><b>10</b></li>
-                    </ol>
+                    <p class="eyebrow">Stats & Fantasy</p>
+                    <h3>أرقام الجولة وترشيحات الفانتازي</h3>
                   </div>
-                  <div>
-                    <h3>أسيست</h3>
-                    <ol class="leaderboard">
-                      <li><span>إمام عاشور</span><b>9</b></li>
-                      <li><span>عبدالله السعيد</span><b>8</b></li>
-                      <li><span>رمضان صبحي</span><b>7</b></li>
-                    </ol>
-                  </div>
+                  <button class="primary-button" type="button" data-section="fantasy">ظبط تشكيلتك</button>
                 </div>
+                <div class="schedule-stats-grid" id="schedule-stats-grid"></div>
               </article>
             </div>
           </div>
